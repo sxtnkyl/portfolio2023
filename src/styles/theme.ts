@@ -32,10 +32,6 @@ const theme = responsiveFontSizes(
               flexDirection: 'column',
               'div:not([class])': {
                 all: 'inherit',
-                main: {
-                  flex: '1',
-                  padding: '3rem 1rem',
-                },
               },
             },
           },

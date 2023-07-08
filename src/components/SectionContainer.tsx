@@ -1,11 +1,11 @@
-import { Box } from '@mui/material';
-import { ReactNode } from 'react';
+import { Box, BoxProps } from '@mui/material';
 
-export const SectionContainer = ({ children }: { children: ReactNode }) => {
+export const SectionContainer = ({ children, sx, ...rest }: BoxProps) => {
   return (
     <Box
       component="section"
-      sx={{ scrollSnapAlign: 'center', height: '100dvh' }}
+      sx={{ scrollSnapAlign: 'center', height: '100dvh', ...sx }}
+      {...rest}
     >
       {children}
     </Box>
