@@ -14,18 +14,18 @@ const StTextWrapper = styled(Stack)`
 
 const professionalInfo = (
   <StTextWrapper spacing={2}>
-    <Typography variant="subtitle2">
+    <Typography variant="body2" fontWeight={900}>
       I work with React and Typescript to build scalable, maintainable, and
       intelligible applications. I enjoy leveraging Nextjs, Material-UI, and AWS
       services to create practical, performant, and seamless applications.
     </Typography>
-    <Typography variant="subtitle2">
+    <Typography variant="body2" fontWeight={900}>
       Having worked as a Geologist in the past, I utilized my expertise to
       address environmental risks. Presently, I leverage this background in
       engineering consulting to effectively collaborate and coordinate intricate
       SaaS functionalities.
     </Typography>
-    <Typography variant="subtitle2">
+    <Typography variant="body2" fontWeight={900}>
       If all of this sounds good to you, reach out with the contact section
       below. Let&apos;s collaborate!
     </Typography>
@@ -34,7 +34,7 @@ const professionalInfo = (
 
 const personalInfo = (
   <StTextWrapper spacing={1}>
-    <Typography variant="subtitle2">
+    <Typography variant="body2" fontWeight={900}>
       Outside of work hours my non-professional passions include over a decade
       of rock climbing and beach volleyball. My love for these sports can be
       summarized in that both require an analytical approach, and require one to
