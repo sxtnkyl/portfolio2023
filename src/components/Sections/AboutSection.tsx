@@ -1,5 +1,6 @@
 import { Stack, Typography, styled } from '@mui/material';
 import { CloudCard } from '../CloudCard/CloudCard';
+import { FramerFadeInWrapper } from '../FramerWrappers/FramerFadeInWrapper';
 import { FloatingHexTile } from '../HexPanel/FloatingHexTile';
 import { SectionContainer } from '../SectionContainer';
 
@@ -33,7 +34,7 @@ const professionalInfo = (
 );
 
 const personalInfo = (
-  <StTextWrapper spacing={1}>
+  <StTextWrapper spacing={2}>
     <Typography variant="body2" fontWeight={900}>
       Outside of work hours my non-professional passions include over a decade
       of rock climbing and beach volleyball. My love for these sports can be
@@ -54,11 +55,14 @@ export const AboutSection = () => {
         position="relative"
         sx={{ isolation: 'isolate' }}
       >
-        <CloudCard cardContent={professionalInfo} sx={{ zIndex: 2 }} />
-        <CloudCard
-          cardContent={personalInfo}
-          sx={{ alignSelf: 'flex-end', zIndex: 2 }}
-        />
+        <FramerFadeInWrapper sx={{ zIndex: 2 }}>
+          <CloudCard cardContent={professionalInfo} />
+        </FramerFadeInWrapper>
+
+        <FramerFadeInWrapper sx={{ zIndex: 2 }}>
+          <CloudCard cardContent={personalInfo} sx={{ marginLeft: 'auto' }} />
+        </FramerFadeInWrapper>
+
         <FloatingHexTile
           tileSize={225}
           sx={{ right: '30%', top: '-15%', zIndex: 1 }}

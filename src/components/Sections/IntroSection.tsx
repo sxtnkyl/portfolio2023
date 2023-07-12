@@ -2,6 +2,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Box, Stack, Typography, useMediaQuery } from '@mui/material';
 import { IntroLinkButton } from '../Buttons/IntroLinkButton';
+import { FramerFadeInWrapper } from '../FramerWrappers/FramerFadeInWrapper';
 import { HexPanel } from '../HexPanel';
 import { SectionContainer } from '../SectionContainer';
 
@@ -24,6 +25,7 @@ export const IntroSection = () => {
       />
 
       <Stack
+        component={FramerFadeInWrapper}
         direction="row"
         spacing={1}
         padding="1rem"
@@ -54,6 +56,7 @@ export const IntroSection = () => {
       </Stack>
 
       <Box
+        component={FramerFadeInWrapper}
         sx={{
           zIndex: 2,
           textAlign: 'center',

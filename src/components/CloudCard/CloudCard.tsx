@@ -20,7 +20,6 @@ export const CloudCard = ({ cardContent, sx, ...rest }: CloudCardProps) => {
         }),
         backdropFilter: 'blur(20px)',
         width: '50vw',
-        minHeight: '30vh',
         ...sx,
       }}
       {...rest}
