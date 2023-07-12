@@ -13,12 +13,10 @@ export const convertHexToRgbOpacity = ({
   hex: string;
   opacity: string;
 }) => {
-  var opacity = opacity.toString();
-
   //color as rgb
   if (hex.charAt(0) !== '#') {
-    var values = hex.split('');
-    var insert = ', ' + opacity + ')';
+    const values = hex.split('');
+    const insert = ', ' + opacity + ')';
     values.splice(values.length - 1, 1, insert);
     return values.join('');
   }
@@ -33,6 +31,6 @@ export const convertHexToRgbOpacity = ({
     let g = parseInt(values[2].toString() + values[3].toString(), 16);
     let b = parseInt(values[4].toString() + values[5].toString(), 16);
 
-    return 'rgb(' + r + ',' + g + ',' + b + ',' + opacity + ')';
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + opacity + ')';
   } else 'rgba(0, 0, 0, 0)';
 };

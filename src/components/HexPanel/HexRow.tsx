@@ -53,11 +53,12 @@ const HexTile = ({ tileSize }: { tileSize: number }) => {
       }}
       animate={{ opacity: Math.random() * (0.5 - 0.1) + 0.1 }}
       transition={{
-        duration: Math.random() * 4 + 2,
+        duration: Math.random() * 2 + 2,
         repeat: Infinity,
         repeatType: 'reverse',
         repeatDelay: Math.random() * 2 + 2,
       }}
+      whileHover={{ opacity: 0.8, transition: { duration: 0.5 } }}
     >
       <Box
         id="top triangle"

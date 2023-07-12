@@ -27,6 +27,7 @@ export default function Home() {
       sx={{
         scrollSnapType: 'y mandatory',
         overflowY: 'auto',
+        overflowX: 'hidden',
         '&::-webkit-scrollbar': {
           width: '0.5rem',
           height: '1rem',
