@@ -4,9 +4,14 @@ import { motion } from 'framer-motion';
 export interface FloatingHexTileProps {
   tileSize: number;
   sx?: SxProps;
+  layoutId?: string;
 }
 
-export const FloatingHexTile = ({ tileSize, sx }: FloatingHexTileProps) => {
+export const FloatingHexTile = ({
+  tileSize,
+  sx,
+  layoutId,
+}: FloatingHexTileProps) => {
   const color = '#fafafa';
 
   const shadowSize = 5;
@@ -19,6 +24,7 @@ export const FloatingHexTile = ({ tileSize, sx }: FloatingHexTileProps) => {
         position: 'absolute',
         ...sx,
       }}
+      layoutId={layoutId ?? ''}
     >
       <Box
         component={motion.div}

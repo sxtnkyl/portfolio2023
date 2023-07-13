@@ -1,6 +1,6 @@
 import skillData, { SkillDataObject } from '@/utils/skillsData';
 import { Stack } from '@mui/material';
-import { motion } from 'framer-motion';
+import { LayoutGroup, motion } from 'framer-motion';
 import { useState } from 'react';
 import { SectionContainer } from '../SectionContainer';
 import { SkillCategory } from '../SkillComponents';
@@ -46,7 +46,7 @@ export const SkillsSection = () => {
         onViewportEnter={() => setInView(true)}
         spacing={4}
       >
-        {skillCategoriesList}
+        <LayoutGroup>{skillCategoriesList}</LayoutGroup>
       </Stack>
     </SectionContainer>
   );

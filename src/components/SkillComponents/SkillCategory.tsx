@@ -30,7 +30,11 @@ export const SkillCategory = ({
       sx={{ isolation: 'isolate', paddingLeft: '1rem' }}
     >
       {isSelected && (
-        <FloatingHexTile tileSize={30} sx={{ top: 0, left: -10, zIndex: 1 }} />
+        <FloatingHexTile
+          layoutId="selectedHex"
+          tileSize={30}
+          sx={{ top: 0, left: -10, zIndex: 1 }}
+        />
       )}
       <Button
         variant={isSelected ? 'contained' : 'outlined'}
