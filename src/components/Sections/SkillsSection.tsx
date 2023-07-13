@@ -1,4 +1,4 @@
-import skillData from '@/utils/skillsData';
+import skillData, { SkillDataObject } from '@/utils/skillsData';
 import { Stack } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
@@ -14,18 +14,28 @@ const variants = {
     opacity: 1,
     y: 0,
     transition: {
-      staggerChildren: 0.25,
+      staggerChildren: 0.15,
       delayChildren: 0.3,
     },
   },
 };
 
 export const SkillsSection = () => {
-  const skillCategoriesList = skillData.map((skill) => (
-    <SkillCategory key={skill.category} category={skill.category} />
-  ));
-
   const [inView, setInView] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<
+    SkillDataObject['category']
+  >('IDE/Scripting Languages');
+
+  const skillCategoriesList = skillData.map((skill) => (
+    <SkillCategory
+      key={skill.category}
+      category={skill.category}
+      selectedCategory={selectedCategory}
+      onClick={() => {
+        setSelectedCategory(skill.category);
+      }}
+    />
+  ));
 
   return (
     <SectionContainer sx={{ display: 'flex', flexDirection: 'column' }}>

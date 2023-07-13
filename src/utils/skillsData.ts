@@ -1,4 +1,9 @@
-const skillData = [
+export interface SkillDataObject {
+  category: string;
+  skills: string[];
+}
+
+const skillData: SkillDataObject[] = [
   {
     category: 'IDE/Scripting Languages',
     skills: ['Visual Studio Code', 'HTML', 'SCSS', 'JavaScript', 'Typescript'],
