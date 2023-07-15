@@ -11,7 +11,7 @@ export const CloudCard = ({ children, sx, ...rest }: CloudCardProps) => {
   return (
     <Card
       component={motion.div}
-      elevation={5}
+      elevation={3}
       sx={{
         position: 'relative',
         backgroundColor: convertHexToRgbOpacity({

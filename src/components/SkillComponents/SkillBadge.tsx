@@ -14,7 +14,7 @@ export const SkillBadge = ({ skill }: { skill: string }) => {
       initial="hidden"
       animate="show"
       exit="hidden"
-      elevation={3}
+      elevation={9}
       sx={{
         display: 'flex',
         alignItems: 'center',
