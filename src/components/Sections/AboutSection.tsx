@@ -16,15 +16,14 @@ const StTextWrapper = styled(Stack)`
 const professionalInfo = (
   <StTextWrapper spacing={2}>
     <Typography variant="body2" fontWeight={900}>
-      I work with React and Typescript to build scalable, maintainable, and
-      intelligible applications. I enjoy leveraging Nextjs, Material-UI, and AWS
-      services to create practical, performant, and seamless applications.
+      Hello! My name is Kyle Sexton - a Frontend Engineer motivated by a passion
+      for creating unique experiences and SaaS tools with practical, performant,
+      and scalable code foundations.
     </Typography>
     <Typography variant="body2" fontWeight={900}>
-      Having worked as a Geologist in the past, I utilized my expertise to
-      address environmental risks. Presently, I leverage this background in
-      engineering consulting to effectively collaborate and coordinate intricate
-      SaaS functionalities.
+      I currently reside in Atlanta, GA, and come from an atypical software
+      background. I&apos;m a former geologist who found a passion for web
+      development and now have a Frontend Engineering career focus with React.
     </Typography>
     <Typography variant="body2" fontWeight={900}>
       If all of this sounds good to you, reach out with the contact section
@@ -56,11 +55,11 @@ export const AboutSection = () => {
         sx={{ isolation: 'isolate' }}
       >
         <FramerFadeInWrapper sx={{ zIndex: 2 }}>
-          <CloudCard cardContent={professionalInfo} />
+          <CloudCard>{professionalInfo}</CloudCard>
         </FramerFadeInWrapper>
 
         <FramerFadeInWrapper sx={{ zIndex: 2 }}>
-          <CloudCard cardContent={personalInfo} sx={{ marginLeft: 'auto' }} />
+          <CloudCard sx={{ marginLeft: 'auto' }}>{personalInfo}</CloudCard>
         </FramerFadeInWrapper>
 
         <FloatingHexTile
