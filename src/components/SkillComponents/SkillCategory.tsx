@@ -27,7 +27,12 @@ export const SkillCategory = ({
       component={motion.div}
       variants={variants}
       position="relative"
-      sx={{ isolation: 'isolate', paddingLeft: '1rem' }}
+      sx={{
+        isolation: 'isolate',
+        paddingLeft: '1rem',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
     >
       {isSelected && (
         <FloatingHexTile

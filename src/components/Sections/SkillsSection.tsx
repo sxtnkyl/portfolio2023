@@ -1,9 +1,10 @@
 import skillData, { SkillDataObject } from '@/utils/skillsData';
-import { Stack } from '@mui/material';
-import { LayoutGroup, motion } from 'framer-motion';
-import { useState } from 'react';
+import { Stack, Typography } from '@mui/material';
+import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
+import { useMemo, useState } from 'react';
+import { CloudCard } from '../CloudCard/CloudCard';
 import { SectionContainer } from '../SectionContainer';
-import { SkillCategory } from '../SkillComponents';
+import { SkillBadge, SkillCategory } from '../SkillComponents';
 
 const variants = {
   hidden: {
@@ -37,16 +38,60 @@ export const SkillsSection = () => {
     />
   ));
 
+  const selectedSkillCategorySkillsList = useMemo(() => {
+    return skillData
+      .find((skillObject) => skillObject.category === selectedCategory)
+      ?.skills.map((skill) => <SkillBadge key={skill} skill={skill} />);
+  }, [selectedCategory]);
+
   return (
-    <SectionContainer sx={{ display: 'flex', flexDirection: 'column' }}>
+    <SectionContainer sx={{ display: 'flex', textAlign: 'center' }}>
+      <CloudCard sx={{ width: '40%' }}>
+        <Typography variant="body2" fontWeight={900} padding="2rem">
+          During my career I&apos;ve used many technologies to build scalable,
+          maintainable, and intelligible applications. I currently enjoy
+          leveraging Nextjs, Material-UI, and AWS services for personal
+          projects, but here is a comprehensive list of tools I&apos;m familiar
+          with.
+        </Typography>
+        <Stack
+          component={motion.div}
+          variants={variants}
+          animate={inView ? 'show' : 'hidden'}
+          onViewportEnter={() => setInView(true)}
+          flexWrap="wrap"
+          alignItems="center"
+          justifyContent="center"
+          spacing={4}
+        >
+          <LayoutGroup>{skillCategoriesList}</LayoutGroup>
+        </Stack>
+      </CloudCard>
       <Stack
-        component={motion.div}
-        variants={variants}
-        animate={inView ? 'show' : 'hidden'}
-        onViewportEnter={() => setInView(true)}
+        sx={{
+          flex: 1,
+          alignItems: 'center',
+          overflowY: 'auto',
+          padding: '2rem 0',
+          '&::-webkit-scrollbar': {
+            width: '0.5rem',
+            height: '1rem',
+            opacity: '0.5',
+          },
+          '&::-webkit-scrollbar-track': {
+            width: '0.5rem',
+            backgroundColor: '#334A52',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: '#96AFB8',
+            borderRadius: '2px',
+          },
+        }}
         spacing={4}
       >
-        <LayoutGroup>{skillCategoriesList}</LayoutGroup>
+        <AnimatePresence mode="wait">
+          {selectedSkillCategorySkillsList}
+        </AnimatePresence>
       </Stack>
     </SectionContainer>
   );

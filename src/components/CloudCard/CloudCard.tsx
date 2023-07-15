@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
 
 interface CloudCardProps extends CardProps {
-  cardContent: ReactNode;
+  children: ReactNode;
 }
 
-export const CloudCard = ({ cardContent, sx, ...rest }: CloudCardProps) => {
+export const CloudCard = ({ children, sx, ...rest }: CloudCardProps) => {
   return (
     <Card
       component={motion.div}
@@ -24,7 +24,7 @@ export const CloudCard = ({ cardContent, sx, ...rest }: CloudCardProps) => {
       }}
       {...rest}
     >
-      {cardContent}
+      {children}
     </Card>
   );
 };
