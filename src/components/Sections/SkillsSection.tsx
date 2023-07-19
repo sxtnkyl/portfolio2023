@@ -2,7 +2,7 @@ import skillData, { SkillDataObject } from '@/utils/skillsData';
 import { Stack, Typography } from '@mui/material';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import { useMemo, useState } from 'react';
-import { CloudCard } from '../CloudCard/CloudCard';
+import { FramerFadeInWrapper } from '../FramerWrappers/FramerFadeInWrapper';
 import { SectionContainer } from '../SectionContainer';
 import { SkillBadge, SkillCategory } from '../SkillComponents';
 
@@ -23,9 +23,8 @@ const variants = {
 
 export const SkillsSection = () => {
   const [inView, setInView] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<
-    SkillDataObject['category']
-  >('IDE/Scripting Languages');
+  const [selectedCategory, setSelectedCategory] =
+    useState<SkillDataObject['category']>('Front End');
 
   const skillCategoriesList = skillData.map((skill) => (
     <SkillCategory
@@ -46,14 +45,24 @@ export const SkillsSection = () => {
 
   return (
     <SectionContainer sx={{ display: 'flex', textAlign: 'center' }}>
-      <CloudCard sx={{ width: '40%' }}>
-        <Typography variant="body2" fontWeight={900} padding="2rem">
-          During my career I&apos;ve used many technologies to build scalable,
-          maintainable, and intelligible applications. I currently enjoy
-          leveraging Nextjs, Material-UI, and AWS services for personal
-          projects, but here is a comprehensive list of tools I&apos;m familiar
-          with.
-        </Typography>
+      <Stack sx={{ width: '40%', zIndex: 2 }}>
+        <FramerFadeInWrapper>
+          <Typography
+            variant="body2"
+            fontWeight={900}
+            padding="2rem"
+            sx={{
+              textShadow:
+                '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
+            }}
+          >
+            During my career I&apos;ve used many technologies to build scalable,
+            maintainable, and intelligible applications. I currently enjoy
+            leveraging Nextjs, Material-UI, and AWS services for personal
+            projects, but here is a comprehensive list of tools I&apos;m
+            familiar with.
+          </Typography>
+        </FramerFadeInWrapper>
         <Stack
           component={motion.div}
           variants={variants}
@@ -66,13 +75,15 @@ export const SkillsSection = () => {
         >
           <LayoutGroup>{skillCategoriesList}</LayoutGroup>
         </Stack>
-      </CloudCard>
+      </Stack>
       <Stack
+        spacing={4}
         sx={{
           flex: 1,
           alignItems: 'center',
           overflowY: 'auto',
           padding: '2rem 0',
+          zIndex: 2,
           '&::-webkit-scrollbar': {
             width: '0.5rem',
             height: '1rem',
@@ -87,7 +98,6 @@ export const SkillsSection = () => {
             borderRadius: '2px',
           },
         }}
-        spacing={4}
       >
         <AnimatePresence mode="wait">
           {selectedSkillCategorySkillsList}

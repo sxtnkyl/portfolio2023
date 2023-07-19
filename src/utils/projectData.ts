@@ -17,7 +17,7 @@
  *
  * active: pinned for visibility on Projects Section
  */
-interface ProjectData {
+export interface ProjectData {
   name: string;
   summary: string;
   technicalChallenges: string;

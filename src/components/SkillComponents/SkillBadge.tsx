@@ -1,5 +1,5 @@
-import { Card, Typography } from '@mui/material';
-import { motion } from 'framer-motion';
+import { Typography } from '@mui/material';
+import { CloudCard } from '../CloudCard/CloudCard';
 
 const badgeVariants = {
   hidden: { opacity: 0, x: 30 },
@@ -8,8 +8,7 @@ const badgeVariants = {
 
 export const SkillBadge = ({ skill }: { skill: string }) => {
   return (
-    <Card
-      component={motion.div}
+    <CloudCard
       variants={badgeVariants}
       initial="hidden"
       animate="show"
@@ -20,9 +19,8 @@ export const SkillBadge = ({ skill }: { skill: string }) => {
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: '10%',
-        minWidth: '50%',
-        maxWidth: '80%',
-        backgroundColor: '#33F1D2',
+        maxHeight: '30%',
+        width: '60%',
         backdropFilter: 'blur(20px)',
         padding: '0 1rem',
       }}
@@ -30,6 +28,6 @@ export const SkillBadge = ({ skill }: { skill: string }) => {
       <Typography variant="button" sx={{ zIndex: 2, position: 'relative' }}>
         {skill}
       </Typography>
-    </Card>
+    </CloudCard>
   );
 };
