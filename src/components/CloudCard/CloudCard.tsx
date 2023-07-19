@@ -1,6 +1,6 @@
 import { convertHexToRgbOpacity } from '@/utils/convertHexToRgbOpacity';
 import { Card, CardProps } from '@mui/material';
-import { AnimationProps, motion } from 'framer-motion';
+import { MotionProps, motion } from 'framer-motion';
 import { ReactNode } from 'react';
 
 interface CloudCardProps extends CardProps {
@@ -11,7 +11,7 @@ export const CloudCard = ({
   children,
   sx,
   ...rest
-}: CloudCardProps & AnimationProps) => {
+}: CloudCardProps & MotionProps) => {
   return (
     <Card
       component={motion.div}

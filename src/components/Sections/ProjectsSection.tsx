@@ -1,10 +1,11 @@
-import { projectData } from '@/utils/projectData';
+import { ProjectData, projectData } from '@/utils/projectData';
 import { useBoundingDimensions } from '@/utils/useBoundingDimensions';
 import { Box, Stack, Typography, useMediaQuery } from '@mui/material';
-import { useMemo, useRef } from 'react';
-import { CloudCard } from '../CloudCard/CloudCard';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useMemo, useRef, useState } from 'react';
 import { FramerFadeInWrapper } from '../FramerWrappers/FramerFadeInWrapper';
 import { HexPanel } from '../HexPanel';
+import { LargeProjectCard, SmallProjectCard } from '../ProjectComponents';
 import { SectionContainer } from '../SectionContainer';
 
 export const ProjectsSection = () => {
@@ -16,26 +17,20 @@ export const ProjectsSection = () => {
 
   const activeProjects = projectData.filter((project) => project.active);
 
+  const [selectedProject, setSelectedProject] = useState<ProjectData>();
+
   const projectSmallCards = useMemo(() => {
     return activeProjects.map((project, idx) => (
-      <CloudCard
+      <SmallProjectCard
         key={project.name}
-        sx={{
-          width: componentWidth * 0.25,
-          height: componentWidth * 0.25,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '0 0.5rem',
-        }}
-        elevation={9}
-      >
-        <Typography variant="caption" fontWeight={900}>
-          {project.name}
-        </Typography>
-      </CloudCard>
+        project={project}
+        componentWidth={componentWidth}
+        selectedProject={selectedProject}
+        setSelectedProject={setSelectedProject}
+        layoutId={`${project.name}`}
+      />
     ));
-  }, [activeProjects, componentWidth]);
+  }, [activeProjects, componentWidth, selectedProject]);
 
   return (
     <SectionContainer
@@ -64,37 +59,57 @@ export const ProjectsSection = () => {
         width="100%"
         height="100%"
         textAlign="center"
+        justifyContent="space-between"
       >
-        <Stack ref={smallCloudCardWrapperRef} width="50%" zIndex={2}>
-          <FramerFadeInWrapper>
-            <Typography
-              variant="body1"
-              fontWeight={900}
-              padding="2rem"
-              sx={{
-                textShadow:
-                  '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
-              }}
-            >
-              Here is a collection of web applications and projects that
-              demonstrate the journey of my web development career. Each
-              represents a unique challenge, skill, or milestone - from
-              responsive and intuitive interfaces to seamless integrations of
-              cutting-edge technologies, each project reflects my dedication to
-              continuous learning and delivering high-quality solutions.
-            </Typography>
-          </FramerFadeInWrapper>
+        <AnimatePresence>
           <Stack
-            direction="row"
-            spacing={4}
-            flex={1}
-            flexWrap="wrap"
-            alignItems="center"
-            justifyContent="center"
+            component={motion.div}
+            ref={smallCloudCardWrapperRef}
+            width="50%"
+            zIndex={2}
           >
-            {projectSmallCards}
+            <FramerFadeInWrapper>
+              <Typography
+                variant="body1"
+                fontWeight={900}
+                padding="2rem"
+                sx={{
+                  textShadow:
+                    '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
+                }}
+              >
+                Here is a collection of web applications and projects that
+                demonstrate the journey of my web development career. Each
+                represents a unique challenge, skill, or milestone - from
+                responsive and intuitive interfaces to seamless integrations of
+                cutting-edge technologies, each project reflects my dedication
+                to continuous learning and delivering high-quality solutions.
+              </Typography>
+            </FramerFadeInWrapper>
+            <Stack
+              component={motion.div}
+              direction="row"
+              spacing={4}
+              flex={1}
+              flexWrap="wrap"
+              alignItems="center"
+              justifyContent="center"
+            >
+              {projectSmallCards}
+            </Stack>
           </Stack>
-        </Stack>
+          {selectedProject && (
+            <LargeProjectCard
+              project={selectedProject}
+              sx={{ zIndex: 2, maxWidth: '45%' }}
+              layoutId={`${selectedProject.name}`}
+              transition={{
+                opacity: { ease: 'linear' },
+                layout: { duration: 0.6 },
+              }}
+            />
+          )}
+        </AnimatePresence>
       </Box>
     </SectionContainer>
   );
