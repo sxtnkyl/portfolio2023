@@ -15,17 +15,17 @@ const StTextWrapper = styled(Stack)`
 
 const professionalInfo = (
   <StTextWrapper spacing={2}>
-    <Typography variant="body2" fontWeight={900}>
+    <Typography variant="body1" fontWeight={900}>
       Hello! My name is Kyle Sexton - a Frontend Engineer motivated by a passion
       for creating unique experiences and SaaS tools with practical, performant,
       and scalable code foundations.
     </Typography>
-    <Typography variant="body2" fontWeight={900}>
+    <Typography variant="body1" fontWeight={900}>
       I currently reside in Atlanta, GA, and come from an atypical software
       background. I&apos;m a former geologist who found a passion for web
       development and now have a Frontend Engineering career focus with React.
     </Typography>
-    <Typography variant="body2" fontWeight={900}>
+    <Typography variant="body1" fontWeight={900}>
       If all of this sounds good to you, reach out with the contact section
       below. Let&apos;s collaborate!
     </Typography>
@@ -34,7 +34,7 @@ const professionalInfo = (
 
 const personalInfo = (
   <StTextWrapper spacing={2}>
-    <Typography variant="body2" fontWeight={900}>
+    <Typography variant="body1" fontWeight={900}>
       Outside of work hours my non-professional passions include over a decade
       of rock climbing and beach volleyball. My love for these sports can be
       summarized in that both require an analytical approach, and require one to

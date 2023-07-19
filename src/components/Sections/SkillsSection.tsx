@@ -48,7 +48,7 @@ export const SkillsSection = () => {
       <Stack sx={{ width: '40%', zIndex: 2 }}>
         <FramerFadeInWrapper>
           <Typography
-            variant="body2"
+            variant="body1"
             fontWeight={900}
             padding="2rem"
             sx={{

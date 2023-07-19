@@ -68,7 +68,7 @@ export const ProjectsSection = () => {
         <Stack ref={smallCloudCardWrapperRef} width="50%" zIndex={2}>
           <FramerFadeInWrapper>
             <Typography
-              variant="body2"
+              variant="body1"
               fontWeight={900}
               padding="2rem"
               sx={{
