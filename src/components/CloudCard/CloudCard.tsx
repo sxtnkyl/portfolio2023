@@ -1,17 +1,21 @@
 import { convertHexToRgbOpacity } from '@/utils/convertHexToRgbOpacity';
 import { Card, CardProps } from '@mui/material';
-import { motion } from 'framer-motion';
+import { MotionProps, motion } from 'framer-motion';
 import { ReactNode } from 'react';
 
 interface CloudCardProps extends CardProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
-export const CloudCard = ({ children, sx, ...rest }: CloudCardProps) => {
+export const CloudCard = ({
+  children,
+  sx,
+  ...rest
+}: CloudCardProps & MotionProps) => {
   return (
     <Card
       component={motion.div}
-      elevation={5}
+      elevation={3}
       sx={{
         position: 'relative',
         backgroundColor: convertHexToRgbOpacity({
@@ -24,7 +28,7 @@ export const CloudCard = ({ children, sx, ...rest }: CloudCardProps) => {
       }}
       {...rest}
     >
-      {children}
+      {children && children}
     </Card>
   );
 };

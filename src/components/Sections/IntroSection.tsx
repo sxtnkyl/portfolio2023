@@ -92,7 +92,9 @@ export const IntroSection = () => {
           display="inline"
           sx={{
             fontWeight: 900,
-            color: '#334A52',
+            color: '#33F1D2',
+            textShadow:
+              '#334A52 0px 2px 5px, #334A52 2px 0px 5px, #334A52 0px -2px 5px, #334A52 -2px 0px 5px',
             letterSpacing: '0.25rem',
           }}
         >

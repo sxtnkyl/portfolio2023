@@ -1,5 +1,12 @@
+type SkillCategory =
+  | 'IDE/Scripting Languages'
+  | 'Front End'
+  | 'Back End'
+  | 'Methodologies'
+  | 'Certs / Courses / Groups'
+  | 'SaaS Experience';
 export interface SkillDataObject {
-  category: string;
+  category: SkillCategory;
   skills: string[];
 }
 
@@ -17,15 +24,16 @@ const skillData: SkillDataObject[] = [
       'Formik',
       'Framer Motion',
       'REST/GraphQL API',
-      'Styled Components',
-      'TailwindCSS',
-      'Bootstrap',
       'React Router/DOM',
       'Jest/React Testing Library',
       'React Intl',
+      'Launch Darkly',
       'Vite',
       "PWA's",
       'Prettier/ESlint/Husky',
+      'Styled Components',
+      'Bootstrap',
+      'TailwindCSS',
     ],
   },
   {
@@ -33,7 +41,8 @@ const skillData: SkillDataObject[] = [
     skills: [
       'AWS Cloud Services',
       'NodeJS',
-      'Dotenv',
+      'Keycloak',
+      'Circle CI',
       'Express',
       'Nodemon',
       'Hashing',
@@ -45,31 +54,31 @@ const skillData: SkillDataObject[] = [
   },
   {
     category: 'Methodologies',
-    skills: ['Agile', 'Jira', 'Slack', 'Figma', 'SaaS'],
+    skills: ['Agile', 'Scrum', 'Feature Driven Dev', 'Jira', 'Slack', 'Figma'],
+  },
+  {
+    category: 'SaaS Experience',
+    skills: [
+      'Inner company cross-discipline collaboration',
+      'Team lead coordination with public/private sector clients',
+      'Training and peer collaboration with new staff',
+      'Proof of concept investigation of new technologies',
+      'Expansion of company services through research',
+      'Third party hardware integration',
+      'Independently motivated',
+    ],
   },
   {
     category: 'Certs / Courses / Groups',
     skills: [
       'Georgia Tech Coding Bootcamp 2021',
-      'Udemy JS Algorithmsand Data Structures Masterclass',
+      'Udemy JS Algorithms and Data Structures Masterclass',
       'Udemy Understanding Typescript 2023',
       'FCC Responsive Web Design',
       'FCC JS Algorithms and Data Structures',
       'FCC Front End Libraries',
       'Levelup Tutorials- Animating React',
       'ReactATL Meetup Group',
-    ],
-  },
-  {
-    category: 'Consulting Experience',
-    skills: [
-      'Over three years of independent task management',
-      'Experience with municiple and federal projects',
-      'Team lead coordination with public/private sector clients',
-      'Inner company cross-discipline collaboration',
-      'Training and oversight of new staff',
-      'Expansion of company services through research, acquisition, and application of new technologies',
-      'Independently motivated',
     ],
   },
 ];
