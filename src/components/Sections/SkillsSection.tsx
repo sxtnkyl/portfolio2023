@@ -1,3 +1,4 @@
+import { convertHexToRgbOpacity } from '@/utils/convertHexToRgbOpacity';
 import skillData, { SkillDataObject } from '@/utils/skillsData';
 import { Stack, Typography } from '@mui/material';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
@@ -90,12 +91,11 @@ export const SkillsSection = () => {
               height: '1rem',
               opacity: '0.5',
             },
-            '&::-webkit-scrollbar-track': {
-              width: '0.5rem',
-              backgroundColor: '#334A52',
-            },
             '&::-webkit-scrollbar-thumb': {
-              backgroundColor: '#96AFB8',
+              backgroundColor: convertHexToRgbOpacity({
+                hex: '#96AFB8',
+                opacity: '0.4',
+              }),
               borderRadius: '2px',
             },
           }}

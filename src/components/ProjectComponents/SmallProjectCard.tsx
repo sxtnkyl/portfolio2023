@@ -1,3 +1,4 @@
+import { convertHexToRgbOpacity } from '@/utils/convertHexToRgbOpacity';
 import { ProjectData } from '@/utils/projectData';
 import { CardProps, Typography } from '@mui/material';
 import { MotionProps, motion } from 'framer-motion';
@@ -31,6 +32,7 @@ export const SmallProjectCard = ({
             width: componentWidth * 0.3,
             height: componentWidth * 0.3,
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
             padding: '0 0.5rem',
@@ -60,9 +62,42 @@ export const SmallProjectCard = ({
           <Typography component={motion.span} variant="body1" fontWeight={900}>
             {project.name}
           </Typography>
+          <Typography
+            component={motion.span}
+            variant="subtitle1"
+            fontWeight={900}
+          >
+            ({project.year})
+          </Typography>
         </CloudCard>
       ) : (
-        <motion.div layout>placeholder</motion.div>
+        <CloudCard
+          key="smallCard-placeholder"
+          onClick={() => setSelectedProject(undefined)}
+          sx={{
+            width: componentWidth * 0.3,
+            height: componentWidth * 0.3,
+            backgroundColor: convertHexToRgbOpacity({
+              hex: '#96AFB8',
+              opacity: '0.2',
+            }),
+            cursor: 'pointer',
+          }}
+          layout
+          initial={{ scale: 1 }}
+          animate={{
+            scale: 0.8,
+            transition: {
+              duration: 0.4,
+            },
+          }}
+          exit={{ scale: 1 }}
+          transition={{
+            type: 'spring',
+            damping: 20,
+            stiffness: 100,
+          }}
+        />
       )}
     </>
   );
