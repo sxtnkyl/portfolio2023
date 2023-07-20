@@ -25,7 +25,35 @@ export const SmallProjectCard = ({
 
   return (
     <>
-      {!isSelected ? (
+      {isSelected ? (
+        <CloudCard
+          key="smallCard-placeholder"
+          onClick={() => setSelectedProject(undefined)}
+          sx={{
+            width: componentWidth * 0.3,
+            height: componentWidth * 0.3,
+            backgroundColor: convertHexToRgbOpacity({
+              hex: '#96AFB8',
+              opacity: '0.2',
+            }),
+            cursor: 'pointer',
+          }}
+          layout
+          initial={{ scale: 1 }}
+          animate={{
+            scale: 0.8,
+            transition: {
+              duration: 0.4,
+            },
+          }}
+          exit={{ scale: 1 }}
+          transition={{
+            type: 'spring',
+            damping: 20,
+            stiffness: 100,
+          }}
+        />
+      ) : (
         <CloudCard
           onClick={() => setSelectedProject(project)}
           sx={{
@@ -70,34 +98,6 @@ export const SmallProjectCard = ({
             ({project.year})
           </Typography>
         </CloudCard>
-      ) : (
-        <CloudCard
-          key="smallCard-placeholder"
-          onClick={() => setSelectedProject(undefined)}
-          sx={{
-            width: componentWidth * 0.3,
-            height: componentWidth * 0.3,
-            backgroundColor: convertHexToRgbOpacity({
-              hex: '#96AFB8',
-              opacity: '0.2',
-            }),
-            cursor: 'pointer',
-          }}
-          layout
-          initial={{ scale: 1 }}
-          animate={{
-            scale: 0.8,
-            transition: {
-              duration: 0.4,
-            },
-          }}
-          exit={{ scale: 1 }}
-          transition={{
-            type: 'spring',
-            damping: 20,
-            stiffness: 100,
-          }}
-        />
       )}
     </>
   );

@@ -129,6 +129,11 @@ export const LargeProjectCard = ({
             </Button>
           )}
         </Stack>
+        {!demoUrl && (
+          <Typography variant="body2" alignSelf="flex-end" fontStyle="italic">
+            Demo currently paused due to hosting costs*
+          </Typography>
+        )}
       </Stack>
     </CloudCard>
   );

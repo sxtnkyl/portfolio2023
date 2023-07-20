@@ -17,7 +17,9 @@ export const ProjectsSection = () => {
 
   const activeProjects = projectData.filter((project) => project.active);
 
-  const [selectedProject, setSelectedProject] = useState<ProjectData>();
+  const [selectedProject, setSelectedProject] = useState<
+    ProjectData | undefined
+  >(activeProjects[0]);
 
   const projectSmallCards = useMemo(() => {
     return activeProjects.map((project) => (
