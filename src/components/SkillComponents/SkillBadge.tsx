@@ -2,13 +2,14 @@ import { Typography } from '@mui/material';
 import { CloudCard } from '../CloudCard/CloudCard';
 
 const badgeVariants = {
-  hidden: { opacity: 0, x: 30 },
-  show: { opacity: 1, x: 0 },
+  hidden: { opacity: 0, x: 30, transition: { duration: 0.25, delay: 0.25 } },
+  show: { opacity: 1, x: 0, transition: { duration: 0.25, delay: 0.25 } },
 };
 
 export const SkillBadge = ({ skill }: { skill: string }) => {
   return (
     <CloudCard
+      key={skill}
       variants={badgeVariants}
       initial="hidden"
       animate="show"

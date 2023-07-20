@@ -45,10 +45,10 @@ export const SkillsSection = () => {
 
   return (
     <SectionContainer sx={{ display: 'flex', textAlign: 'center' }}>
-      <Stack sx={{ width: '40%', zIndex: 2 }}>
+      <Stack sx={{ width: '50%', zIndex: 2 }}>
         <FramerFadeInWrapper>
           <Typography
-            variant="body1"
+            variant="h6"
             fontWeight={900}
             padding="2rem"
             sx={{
@@ -76,33 +76,33 @@ export const SkillsSection = () => {
           <LayoutGroup>{skillCategoriesList}</LayoutGroup>
         </Stack>
       </Stack>
-      <Stack
-        spacing={4}
-        sx={{
-          flex: 1,
-          alignItems: 'center',
-          overflowY: 'auto',
-          padding: '2rem 0',
-          zIndex: 2,
-          '&::-webkit-scrollbar': {
-            width: '0.5rem',
-            height: '1rem',
-            opacity: '0.5',
-          },
-          '&::-webkit-scrollbar-track': {
-            width: '0.5rem',
-            backgroundColor: '#334A52',
-          },
-          '&::-webkit-scrollbar-thumb': {
-            backgroundColor: '#96AFB8',
-            borderRadius: '2px',
-          },
-        }}
-      >
-        <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait">
+        <Stack
+          spacing={4}
+          sx={{
+            flex: 1,
+            alignItems: 'center',
+            overflowY: 'auto',
+            padding: '2rem 0',
+            zIndex: 2,
+            '&::-webkit-scrollbar': {
+              width: '0.5rem',
+              height: '1rem',
+              opacity: '0.5',
+            },
+            '&::-webkit-scrollbar-track': {
+              width: '0.5rem',
+              backgroundColor: '#334A52',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              backgroundColor: '#96AFB8',
+              borderRadius: '2px',
+            },
+          }}
+        >
           {selectedSkillCategorySkillsList}
-        </AnimatePresence>
-      </Stack>
+        </Stack>
+      </AnimatePresence>
     </SectionContainer>
   );
 };

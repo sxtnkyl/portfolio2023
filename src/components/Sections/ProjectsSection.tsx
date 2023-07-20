@@ -1,7 +1,7 @@
 import { ProjectData, projectData } from '@/utils/projectData';
 import { useBoundingDimensions } from '@/utils/useBoundingDimensions';
 import { Box, Stack, Typography, useMediaQuery } from '@mui/material';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { useMemo, useRef, useState } from 'react';
 import { FramerFadeInWrapper } from '../FramerWrappers/FramerFadeInWrapper';
 import { HexPanel } from '../HexPanel';
@@ -20,9 +20,9 @@ export const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectData>();
 
   const projectSmallCards = useMemo(() => {
-    return activeProjects.map((project, idx) => (
+    return activeProjects.map((project) => (
       <SmallProjectCard
-        key={project.name}
+        key={`${project.name}-smallCard`}
         project={project}
         componentWidth={componentWidth}
         selectedProject={selectedProject}
@@ -53,17 +53,17 @@ export const ProjectsSection = () => {
         }}
       />
 
-      <Box
-        display="flex"
-        flexDirection="row-reverse"
-        width="100%"
-        height="100%"
-        textAlign="center"
-        justifyContent="space-between"
-      >
-        <AnimatePresence>
+      <AnimatePresence>
+        <Box
+          display="flex"
+          flexDirection="row-reverse"
+          width="100%"
+          height="100%"
+          textAlign="center"
+          justifyContent="space-between"
+        >
           <Stack
-            component={motion.div}
+            key="textContainer"
             ref={smallCloudCardWrapperRef}
             width="50%"
             zIndex={2}
@@ -87,9 +87,8 @@ export const ProjectsSection = () => {
               </Typography>
             </FramerFadeInWrapper>
             <Stack
-              component={motion.div}
               direction="row"
-              spacing={4}
+              spacing={2}
               flex={1}
               flexWrap="wrap"
               alignItems="center"
@@ -98,19 +97,9 @@ export const ProjectsSection = () => {
               {projectSmallCards}
             </Stack>
           </Stack>
-          {selectedProject && (
-            <LargeProjectCard
-              project={selectedProject}
-              sx={{ zIndex: 2, maxWidth: '45%' }}
-              layoutId={`${selectedProject.name}`}
-              transition={{
-                opacity: { ease: 'linear' },
-                layout: { duration: 0.6 },
-              }}
-            />
-          )}
-        </AnimatePresence>
-      </Box>
+          {selectedProject && <LargeProjectCard project={selectedProject} />}
+        </Box>
+      </AnimatePresence>
     </SectionContainer>
   );
 };

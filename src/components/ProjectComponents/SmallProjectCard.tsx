@@ -28,8 +28,8 @@ export const SmallProjectCard = ({
         <CloudCard
           onClick={() => setSelectedProject(project)}
           sx={{
-            width: componentWidth * 0.25,
-            height: componentWidth * 0.25,
+            width: componentWidth * 0.3,
+            height: componentWidth * 0.3,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -42,7 +42,6 @@ export const SmallProjectCard = ({
             transition: { duration: 0.1, delay: 0 },
           }}
           whileTap={{ scale: 0.9 }}
-          layout
           initial={{ scale: 1 }}
           animate={{
             scale: 0.8,
@@ -58,16 +57,12 @@ export const SmallProjectCard = ({
           }}
           {...rest}
         >
-          <Typography
-            component={motion.span}
-            variant="caption"
-            fontWeight={900}
-          >
+          <Typography component={motion.span} variant="body1" fontWeight={900}>
             {project.name}
           </Typography>
         </CloudCard>
       ) : (
-        <div>placeholder</div>
+        <motion.div layout>placeholder</motion.div>
       )}
     </>
   );
