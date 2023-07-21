@@ -1,5 +1,4 @@
 import {
-  AboutSection,
   ContactSection,
   IntroSection,
   ProjectsSection,
@@ -44,7 +43,6 @@ export default function Home() {
       }}
     >
       <IntroSection />
-      <AboutSection />
       <SkillsSection />
       <ProjectsSection />
       <ContactSection />

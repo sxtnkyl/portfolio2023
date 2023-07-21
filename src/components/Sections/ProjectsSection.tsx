@@ -72,7 +72,7 @@ export const ProjectsSection = () => {
           >
             <FramerFadeInWrapper>
               <Typography
-                variant="body1"
+                variant="h6"
                 fontWeight={900}
                 padding="2rem"
                 sx={{
@@ -80,12 +80,12 @@ export const ProjectsSection = () => {
                     '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
                 }}
               >
-                Here is a collection of web applications and projects that
+                The following collection of web applications and projects
                 demonstrate the journey of my web development career. Each
                 represents a unique challenge, skill, or milestone - from
-                responsive and intuitive interfaces to seamless integrations of
-                cutting-edge technologies, each project reflects my dedication
-                to continuous learning and delivering high-quality solutions.
+                responsive and intuitive interfaces to integration of modern
+                tooling and libraries, reflecting my dedication to continuous
+                learning and delivering high-quality solutions.
               </Typography>
             </FramerFadeInWrapper>
             <Stack

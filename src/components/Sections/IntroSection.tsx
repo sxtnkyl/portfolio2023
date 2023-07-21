@@ -61,45 +61,36 @@ export const IntroSection = () => {
         sx={{
           zIndex: 2,
           textAlign: 'center',
-          textShadow:
-            '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
+          maxWidth: '90ch',
         }}
       >
         <Typography
-          variant="h2"
+          variant="h4"
           sx={{
-            fontWeight: 900,
-            color: '#334A52',
-            letterSpacing: '0.25rem',
-          }}
-        >
-          Kyle Sexton
-        </Typography>
-        <Typography
-          variant="h2"
-          display="inline"
-          sx={{
-            fontWeight: 900,
-            color: '#33F1D2',
-            marginRight: '0.75ch',
+            fontWeight: 500,
             textShadow:
-              '#334A52 0px 2px 5px, #334A52 2px 0px 5px, #334A52 0px -2px 5px, #334A52 -2px 0px 5px',
+              '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
           }}
         >
-          Frontend
-        </Typography>
-        <Typography
-          variant="h2"
-          display="inline"
-          sx={{
-            fontWeight: 900,
-            color: '#33F1D2',
-            textShadow:
-              '#334A52 0px 2px 5px, #334A52 2px 0px 5px, #334A52 0px -2px 5px, #334A52 -2px 0px 5px',
-            letterSpacing: '0.25rem',
-          }}
-        >
-          Engineer.
+          Welcome! My name is
+          <Typography
+            variant="h2"
+            sx={{
+              padding: '1rem 0',
+              fontWeight: 900,
+              color: '#33F1D2',
+              textShadow:
+                '#334A52 0px 2px 5px, #334A52 2px 0px 5px, #334A52 0px -2px 5px, #334A52 -2px 0px 5px',
+            }}
+          >
+            Kyle Sexton.
+          </Typography>
+          I&apos;m a{' '}
+          <Typography variant="h4" display="inline" fontWeight={900}>
+            Frontend Engineer
+          </Typography>{' '}
+          who creates unique experiences and SaaS tools with practical,
+          performant, and scalable code foundations.
         </Typography>
       </Box>
     </SectionContainer>

@@ -1,6 +1,6 @@
 import { convertHexToRgbOpacity } from '@/utils/convertHexToRgbOpacity';
 import skillData, { SkillDataObject } from '@/utils/skillsData';
-import { Stack, Typography } from '@mui/material';
+import { Stack, Typography, useMediaQuery } from '@mui/material';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import { useMemo, useState } from 'react';
 import { FramerFadeInWrapper } from '../FramerWrappers/FramerFadeInWrapper';
@@ -23,6 +23,8 @@ const variants = {
 };
 
 export const SkillsSection = () => {
+  const isMediumSizeScreen = useMediaQuery('(min-width:600px)');
+
   const [inView, setInView] = useState(false);
   const [selectedCategory, setSelectedCategory] =
     useState<SkillDataObject['category']>('Front End');
@@ -45,7 +47,9 @@ export const SkillsSection = () => {
   }, [selectedCategory]);
 
   return (
-    <SectionContainer sx={{ display: 'flex', textAlign: 'center' }}>
+    <SectionContainer
+      sx={{ position: 'relative', display: 'flex', textAlign: 'center' }}
+    >
       <Stack sx={{ width: '50%', zIndex: 2 }}>
         <FramerFadeInWrapper>
           <Typography
