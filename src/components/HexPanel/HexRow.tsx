@@ -51,12 +51,12 @@ const HexTile = ({ tileSize }: { tileSize: number }) => {
         marginBottom: `calc(${tileSize / 2}px / -2)`,
         opacity: 0,
       }}
-      animate={{ opacity: Math.random() * (0.5 - 0.1) + 0.1 }}
+      animate={{ opacity: Math.random() * (0.6 - 0.1) + 0.1 }}
       transition={{
-        duration: Math.random() * 2 + 2,
+        duration: Math.random() * 2 + 1,
         repeat: Infinity,
         repeatType: 'reverse',
-        repeatDelay: Math.random() * 2 + 2,
+        repeatDelay: Math.random() * 2 + 1,
       }}
       whileHover={{ opacity: 0.8, transition: { duration: 0.5 } }}
     >
