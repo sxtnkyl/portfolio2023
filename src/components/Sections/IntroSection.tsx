@@ -1,7 +1,8 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Box, Stack, Typography, useMediaQuery } from '@mui/material';
-import { IntroLinkButton } from '../Buttons/IntroLinkButton';
+
+import { NextLinkMuiButton } from '../Buttons';
 import { FramerFadeInWrapper } from '../FramerWrappers/FramerFadeInWrapper';
 import { HexPanel } from '../HexPanel';
 import { SectionContainer } from '../SectionContainer';
@@ -35,24 +36,24 @@ export const IntroSection = () => {
         zIndex={2}
         display="flex"
       >
-        <IntroLinkButton
+        <NextLinkMuiButton
           aria-label="link to resume"
           href={'/Kyle_Sexton_Resume_June2023.pdf'}
         >
-          resume
-        </IntroLinkButton>
-        <IntroLinkButton
+          <Typography variant="button">resume</Typography>
+        </NextLinkMuiButton>
+        <NextLinkMuiButton
           aria-label="link to linkedin"
           href="https://www.linkedin.com/in/ksexton91/"
         >
           <LinkedInIcon />
-        </IntroLinkButton>
-        <IntroLinkButton
+        </NextLinkMuiButton>
+        <NextLinkMuiButton
           aria-label="link to github"
           href="https://github.com/sxtnkyl"
         >
           <GitHubIcon />
-        </IntroLinkButton>
+        </NextLinkMuiButton>
       </Stack>
 
       <Box
