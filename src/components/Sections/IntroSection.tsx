@@ -62,33 +62,52 @@ export const IntroSection = () => {
           zIndex: 2,
           textAlign: 'center',
           maxWidth: '90ch',
+          fontWeight: 500,
         }}
       >
         <Typography
           variant="h4"
           sx={{
-            fontWeight: 500,
             textShadow:
               '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
           }}
         >
           Welcome! My name is
-          <Typography
-            variant="h2"
-            sx={{
-              padding: '1rem 0',
-              fontWeight: 900,
-              color: '#33F1D2',
-              textShadow:
-                '#334A52 0px 2px 5px, #334A52 2px 0px 5px, #334A52 0px -2px 5px, #334A52 -2px 0px 5px',
-            }}
-          >
-            Kyle Sexton.
-          </Typography>
+        </Typography>
+        <Typography
+          variant="h2"
+          sx={{
+            padding: '1rem 0',
+            fontWeight: 900,
+            color: '#33F1D2',
+            textShadow:
+              '#334A52 0px 2px 5px, #334A52 2px 0px 5px, #334A52 0px -2px 5px, #334A52 -2px 0px 5px',
+          }}
+        >
+          Kyle Sexton.
+        </Typography>
+        <Typography
+          variant="h4"
+          sx={{
+            display: 'inline',
+            textShadow:
+              '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
+          }}
+        >
           I&apos;m a{' '}
-          <Typography variant="h4" display="inline" fontWeight={900}>
-            Frontend Engineer
-          </Typography>{' '}
+        </Typography>
+        <Typography variant="h4" display="inline" fontWeight={900}>
+          Frontend Engineer
+        </Typography>
+        <Typography
+          variant="h4"
+          sx={{
+            display: 'inline',
+            textShadow:
+              '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
+          }}
+        >
+          {' '}
           who creates unique experiences and SaaS tools with practical,
           performant, and scalable code foundations.
         </Typography>
