@@ -1,7 +1,8 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Box, Stack, Typography, useMediaQuery } from '@mui/material';
-import { IntroLinkButton } from '../Buttons/IntroLinkButton';
+
+import { NextLinkMuiButton } from '../Buttons';
 import { FramerFadeInWrapper } from '../FramerWrappers/FramerFadeInWrapper';
 import { HexPanel } from '../HexPanel';
 import { SectionContainer } from '../SectionContainer';
@@ -35,24 +36,24 @@ export const IntroSection = () => {
         zIndex={2}
         display="flex"
       >
-        <IntroLinkButton
+        <NextLinkMuiButton
           aria-label="link to resume"
           href={'/Kyle_Sexton_Resume_June2023.pdf'}
         >
-          resume
-        </IntroLinkButton>
-        <IntroLinkButton
+          <Typography variant="button">resume</Typography>
+        </NextLinkMuiButton>
+        <NextLinkMuiButton
           aria-label="link to linkedin"
           href="https://www.linkedin.com/in/ksexton91/"
         >
           <LinkedInIcon />
-        </IntroLinkButton>
-        <IntroLinkButton
+        </NextLinkMuiButton>
+        <NextLinkMuiButton
           aria-label="link to github"
           href="https://github.com/sxtnkyl"
         >
           <GitHubIcon />
-        </IntroLinkButton>
+        </NextLinkMuiButton>
       </Stack>
 
       <Box
@@ -60,45 +61,55 @@ export const IntroSection = () => {
         sx={{
           zIndex: 2,
           textAlign: 'center',
-          textShadow:
-            '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
+          maxWidth: '90ch',
+          fontWeight: 500,
         }}
       >
         <Typography
-          variant="h2"
+          variant="h4"
           sx={{
-            fontWeight: 900,
-            color: '#334A52',
-            letterSpacing: '0.25rem',
-          }}
-        >
-          Kyle Sexton
-        </Typography>
-        <Typography
-          variant="h2"
-          display="inline"
-          sx={{
-            fontWeight: 900,
-            color: '#33F1D2',
-            marginRight: '0.75ch',
             textShadow:
-              '#334A52 0px 2px 5px, #334A52 2px 0px 5px, #334A52 0px -2px 5px, #334A52 -2px 0px 5px',
+              '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
           }}
         >
-          Frontend
+          Welcome! My name is
         </Typography>
         <Typography
           variant="h2"
-          display="inline"
           sx={{
+            padding: '1rem 0',
             fontWeight: 900,
             color: '#33F1D2',
             textShadow:
               '#334A52 0px 2px 5px, #334A52 2px 0px 5px, #334A52 0px -2px 5px, #334A52 -2px 0px 5px',
-            letterSpacing: '0.25rem',
           }}
         >
-          Engineer.
+          Kyle Sexton.
+        </Typography>
+        <Typography
+          variant="h4"
+          sx={{
+            display: 'inline',
+            textShadow:
+              '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
+          }}
+        >
+          I&apos;m a{' '}
+        </Typography>
+        <Typography variant="h4" display="inline" fontWeight={900}>
+          Frontend Engineer
+        </Typography>
+        <Typography
+          variant="h4"
+          sx={{
+            display: 'inline',
+            textShadow:
+              '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
+          }}
+        >
+          {' '}
+          who creates unique experiences and SaaS tools with practical,
+          performant, and scalable code foundations.
         </Typography>
       </Box>
     </SectionContainer>

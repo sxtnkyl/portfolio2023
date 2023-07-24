@@ -1,8 +1,10 @@
 import { convertHexToRgbOpacity } from '@/utils/convertHexToRgbOpacity';
 import { ProjectData } from '@/utils/projectData';
 import { GitHub } from '@mui/icons-material';
-import { Box, Button, CardProps, Chip, Stack, Typography } from '@mui/material';
+import { Box, CardProps, Chip, Stack, Typography } from '@mui/material';
 import { MotionProps } from 'framer-motion';
+
+import { NextLinkMuiButton } from '../Buttons';
 import { CloudCard } from '../CloudCard/CloudCard';
 
 interface LargeProjectCardProps extends CardProps {
@@ -103,30 +105,25 @@ export const LargeProjectCard = ({
           flex={1}
         >
           {demoUrl && (
-            <Button
+            <NextLinkMuiButton
               aria-label="link to live demo"
-              target="_blank"
-              rel="noopener noreferrer"
               href={demoUrl}
-              variant="contained"
-              color="secondary"
-              style={{ marginRight: '16px', height: 'fit-content', color: '' }}
+              buttonProps={{
+                sx: { marginRight: '16px', height: 'fit-content', color: '' },
+              }}
             >
               Live Demo
-            </Button>
+            </NextLinkMuiButton>
           )}
           {githubUrl && (
-            <Button
+            <NextLinkMuiButton
               aria-label="link to code repo"
-              target="_blank"
-              rel="noopener noreferrer"
               href={githubUrl}
-              variant="contained"
-              color="secondary"
-              sx={{ height: 'fit-content' }}
+              passHref
+              buttonProps={{ sx: { height: 'fit-content' } }}
             >
               <GitHub />
-            </Button>
+            </NextLinkMuiButton>
           )}
         </Stack>
         {!demoUrl && (

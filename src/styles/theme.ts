@@ -1,3 +1,4 @@
+import { convertHexToRgbOpacity } from '@/utils/convertHexToRgbOpacity';
 import { createTheme, responsiveFontSizes } from '@mui/material';
 
 const theme = responsiveFontSizes(
@@ -32,6 +33,21 @@ const theme = responsiveFontSizes(
               flexDirection: 'column',
               'div:not([class])': {
                 all: 'inherit',
+              },
+            },
+            input: {
+              '&:focus': {
+                background: `${convertHexToRgbOpacity({
+                  hex: '#33F1D2',
+                  opacity: '0.3',
+                })}`,
+              },
+              '&:-webkit-autofill': {
+                WebkitBoxShadow: `0 0 0 100px ${convertHexToRgbOpacity({
+                  hex: '#33F1D2',
+                  opacity: '0.3',
+                })} inset`,
+                WebkitTextFillColor: 'default',
               },
             },
           },
