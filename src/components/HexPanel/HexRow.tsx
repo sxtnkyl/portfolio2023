@@ -60,8 +60,8 @@ const HexTile = ({ tileSize }: { tileSize: number }) => {
       }}
       whileHover={{ opacity: 0.8, transition: { duration: 0.5 } }}
     >
+      {/* top triangle */}
       <Box
-        id="top triangle"
         sx={{
           width: 0,
           borderBottom: `calc(${tileSize}px / (2 * tan(60deg))) solid #fafafa`,
@@ -70,8 +70,8 @@ const HexTile = ({ tileSize }: { tileSize: number }) => {
         }}
         style={{ borderBottomColor: color }}
       />
+      {/* central box */}
       <Box
-        id="central box"
         sx={{
           width: tileSize,
           height: `calc(${tileSize}px * tan(30deg))`,
@@ -79,8 +79,8 @@ const HexTile = ({ tileSize }: { tileSize: number }) => {
         }}
         style={{ backgroundColor: color }}
       />
+      {/* bottom triangle */}
       <Box
-        id="bottom triangle"
         sx={{
           width: 0,
           borderTop: `calc(${tileSize}px / (2 * tan(60deg))) solid #fafafa`,

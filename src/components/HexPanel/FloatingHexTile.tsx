@@ -38,8 +38,8 @@ export const FloatingHexTile = ({
         }}
         sx={{ position: 'relative', isolation: 'isolate' }}
       >
+        {/* top-triangle */}
         <Box
-          id="top triangle"
           sx={{
             width: 0,
             borderBottom: `calc(${tileSize}px / (2 * tan(60deg))) solid #fafafa`,
@@ -52,8 +52,8 @@ export const FloatingHexTile = ({
             borderBottomColor: color,
           }}
         />
+        {/* central-box */}
         <Box
-          id="central box"
           sx={{
             width: tileSize,
             height: `calc(${tileSize}px * tan(30deg))`,
@@ -65,8 +65,8 @@ export const FloatingHexTile = ({
             backgroundColor: color,
           }}
         />
+        {/* bottom-triangle */}
         <Box
-          id="bottom triangle"
           sx={{
             width: 0,
             borderTop: `calc(${tileSize}px / (2 * tan(60deg))) solid #fafafa`,
@@ -82,8 +82,8 @@ export const FloatingHexTile = ({
           }}
         />
 
+        {/* central-box-shadow */}
         <Box
-          id="central box shadow"
           sx={{
             width: tileSize,
             height: `calc(${tileSize}px * tan(30deg))`,
@@ -95,8 +95,8 @@ export const FloatingHexTile = ({
           }}
           style={{ backgroundColor: shadowColor, filter: 'blur(5px)' }}
         />
+        {/* bottom-triangle-shadow */}
         <Box
-          id="bottom triangle shadow"
           sx={{
             width: 0,
             borderTop: `calc(${tileSize}px / (2 * tan(60deg))) solid ${shadowColor}`,

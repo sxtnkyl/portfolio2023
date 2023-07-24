@@ -60,7 +60,7 @@ export const ContactForm = () => {
             </Typography>
             <TextFormField name="name" label="Name" />
             <TextFormField name="email" label="Email" />
-            <TextFormField name="message" label="Leave a Message!" rows={5} />
+            <TextFormField name="message" label="Leave a Message!" />
             <SubmitButton
               status={loading}
               buttonProps={{
