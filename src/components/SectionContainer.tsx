@@ -1,6 +1,8 @@
-import { Box, BoxProps } from '@mui/material';
+import { Box, BoxProps, useMediaQuery } from '@mui/material';
 
 export const SectionContainer = ({ children, sx, ...rest }: BoxProps) => {
+  const isMediumSizeScreen = useMediaQuery('(min-width:600px)');
+
   return (
     <Box
       component="section"
@@ -8,7 +10,7 @@ export const SectionContainer = ({ children, sx, ...rest }: BoxProps) => {
         scrollSnapAlign: 'center',
         height: '100dvh',
         width: '100%',
-        padding: '4rem',
+        padding: isMediumSizeScreen ? '4rem' : '1rem',
         ...sx,
       }}
       {...rest}

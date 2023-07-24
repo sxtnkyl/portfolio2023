@@ -20,8 +20,8 @@ export const IntroSection = () => {
       }}
     >
       <HexPanel
-        numberOfRows={isMediumSizeScreen ? 7 : 9}
-        tilesPerRow={isMediumSizeScreen ? 10 : 6}
+        numberOfRows={isMediumSizeScreen ? 7 : 10}
+        tilesPerRow={isMediumSizeScreen ? 10 : 4}
         sx={{ position: 'absolute', top: 0, left: 0 }}
       />
 
