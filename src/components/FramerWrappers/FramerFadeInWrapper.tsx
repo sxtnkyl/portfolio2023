@@ -1,6 +1,6 @@
 import { Box, BoxProps } from '@mui/material';
-import { motion } from 'framer-motion';
-import { ReactNode, useState } from 'react';
+import { MotionProps, motion, useInView } from 'framer-motion';
+import { ReactNode, useRef } from 'react';
 
 interface FramerFadeInWrapperProps extends BoxProps {
   children: ReactNode;
@@ -9,17 +9,17 @@ interface FramerFadeInWrapperProps extends BoxProps {
 export const FramerFadeInWrapper = ({
   children,
   ...rest
-}: FramerFadeInWrapperProps) => {
-  const [isInView, setIsInView] = useState(false);
+}: FramerFadeInWrapperProps & MotionProps) => {
+  const fadeInWrapperRef = useRef(null);
+  const isInView = useInView(fadeInWrapperRef, { once: true, amount: 'all' });
 
   return (
     <Box
+      ref={fadeInWrapperRef}
       component={motion.div}
       initial={false}
       animate={isInView ? { y: 0, opacity: 1 } : { y: -20, opacity: 0 }}
       transition={{ duration: 0.75, delay: 0.5 }}
-      viewport={{ once: true }}
-      onViewportEnter={() => setIsInView(true)}
       {...rest}
     >
       {children}
