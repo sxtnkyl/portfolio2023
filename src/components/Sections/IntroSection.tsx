@@ -31,7 +31,7 @@ export const IntroSection = () => {
         spacing={1}
         padding="1rem"
         position="absolute"
-        top={0}
+        top="1.5rem"
         right={0}
         zIndex={2}
         display="flex"

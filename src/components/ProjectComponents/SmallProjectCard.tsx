@@ -1,6 +1,6 @@
 import { convertHexToRgbOpacity } from '@/utils/convertHexToRgbOpacity';
 import { ProjectData } from '@/utils/projectData';
-import { CardProps, Typography } from '@mui/material';
+import { CardProps, Stack, Typography } from '@mui/material';
 import { MotionProps, motion } from 'framer-motion';
 import { Dispatch, SetStateAction, useMemo } from 'react';
 import { CloudCard } from '../CloudCard/CloudCard';
@@ -9,39 +9,43 @@ interface SmallProjectCardProps extends CardProps {
   selectedProject?: ProjectData;
   setSelectedProject: Dispatch<SetStateAction<ProjectData | undefined>>;
   project: ProjectData;
-  componentWidth: number;
+  cardDimensions: { height: number | string; width: number | string };
 }
 
 export const SmallProjectCard = ({
   selectedProject,
   setSelectedProject,
   project,
-  componentWidth,
+  cardDimensions,
   ...rest
 }: SmallProjectCardProps & MotionProps) => {
+  const { height, width } = cardDimensions;
   const isSelected = useMemo(() => {
     return selectedProject === project;
   }, [project, selectedProject]);
 
   return (
-    <>
+    <Stack
+      sx={{ width: '50%', justifyContent: 'center', alignItems: 'center' }}
+    >
       {isSelected ? (
         <CloudCard
           key="smallCard-placeholder"
           onClick={() => setSelectedProject(undefined)}
           sx={{
-            width: componentWidth * 0.3,
-            height: componentWidth * 0.3,
+            width,
+            height,
             backgroundColor: convertHexToRgbOpacity({
               hex: '#96AFB8',
               opacity: '0.2',
             }),
             cursor: 'pointer',
+            margin: '1rem',
           }}
           layout
           initial={{ scale: 1 }}
           animate={{
-            scale: 0.8,
+            scale: 1,
             transition: {
               duration: 0.4,
             },
@@ -57,14 +61,15 @@ export const SmallProjectCard = ({
         <CloudCard
           onClick={() => setSelectedProject(project)}
           sx={{
-            width: componentWidth * 0.3,
-            height: componentWidth * 0.3,
+            width,
+            height,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
             padding: '0 0.5rem',
             cursor: 'pointer',
+            margin: '1rem',
           }}
           elevation={9}
           whileHover={{
@@ -74,7 +79,7 @@ export const SmallProjectCard = ({
           whileTap={{ scale: 0.9 }}
           initial={{ scale: 1 }}
           animate={{
-            scale: 0.8,
+            scale: 1,
             transition: {
               duration: 0.4,
             },
@@ -99,6 +104,6 @@ export const SmallProjectCard = ({
           </Typography>
         </CloudCard>
       )}
-    </>
+    </Stack>
   );
 };

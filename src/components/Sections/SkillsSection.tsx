@@ -81,7 +81,7 @@ export const SkillsSection = () => {
       }}
     >
       <Stack
-        spacing={isMediumSizeScreen ? 2 : 4}
+        spacing={4}
         sx={{
           zIndex: 2,
           width: responsiveWidthSize,
@@ -120,6 +120,7 @@ export const SkillsSection = () => {
           alignItems="center"
           justifyContent="center"
           spacing={isMediumSizeScreen ? 4 : 2}
+          flex={1}
         >
           <LayoutGroup>{skillCategoriesList}</LayoutGroup>
         </Stack>
