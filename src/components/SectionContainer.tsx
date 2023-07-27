@@ -1,6 +1,9 @@
+import useWindowDimensions from '@/utils/useWindowDimensions';
 import { Box, BoxProps } from '@mui/material';
 
 export const SectionContainer = ({ children, sx, ...rest }: BoxProps) => {
+  const { width: isDesktopSize } = useWindowDimensions({ breakWidth: 600 });
+
   return (
     <Box
       component="section"
@@ -8,7 +11,7 @@ export const SectionContainer = ({ children, sx, ...rest }: BoxProps) => {
         scrollSnapAlign: 'center',
         height: '100dvh',
         width: '100%',
-        padding: '4rem',
+        padding: isDesktopSize ? '4rem' : '1rem',
         ...sx,
       }}
       {...rest}

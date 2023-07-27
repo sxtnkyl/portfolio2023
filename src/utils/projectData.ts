@@ -175,7 +175,7 @@ export const projectData: ProjectData[] = [
     demoUrl: 'https://sxtnkyl.github.io/teambuilder/',
     githubUrl: 'https://github.com/sxtnkyl/teambuilder',
     year: '2020',
-    active: true,
+    active: false,
   },
   {
     name: 'Hand Sampler',

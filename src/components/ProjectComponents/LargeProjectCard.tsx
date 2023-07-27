@@ -29,6 +29,7 @@ export const LargeProjectCard = ({
   const conceptChips = concepts.map((concept) => (
     <Chip key={concept} label={concept} />
   ));
+
   return (
     <CloudCard
       key={`${project.name}-largeCard`}
@@ -39,7 +40,8 @@ export const LargeProjectCard = ({
       }}
       sx={{
         zIndex: 2,
-        maxWidth: '45%',
+        flex: 1,
+        height: '100%',
         ...sx,
       }}
       elevation={9}

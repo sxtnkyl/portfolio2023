@@ -1,7 +1,7 @@
 import { SkillDataObject } from '@/utils/skillsData';
 import { Box, Button, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
-import { useMemo } from 'react';
+import { Dispatch, SetStateAction, useCallback, useMemo } from 'react';
 import { FloatingHexTile } from '../HexPanel/FloatingHexTile';
 
 const variants = {
@@ -12,15 +12,25 @@ const variants = {
 export const SkillCategory = ({
   category,
   selectedCategory,
-  onClick,
+  setSelectedCategory,
 }: {
-  category: string;
-  selectedCategory: SkillDataObject['category'];
-  onClick: () => void;
+  category: SkillDataObject['category'];
+  selectedCategory?: SkillDataObject['category'];
+  setSelectedCategory: Dispatch<
+    SetStateAction<SkillDataObject['category'] | undefined>
+  >;
 }) => {
   const isSelected = useMemo(() => {
     return category === selectedCategory;
   }, [category, selectedCategory]);
+
+  const handleCategoryClick = useCallback(() => {
+    if (isSelected) {
+      setSelectedCategory(undefined);
+    } else {
+      setSelectedCategory(category);
+    }
+  }, [category, isSelected, setSelectedCategory]);
 
   return (
     <Box
@@ -44,7 +54,7 @@ export const SkillCategory = ({
       <Button
         variant={isSelected ? 'contained' : 'outlined'}
         color={isSelected ? 'secondary' : 'primary'}
-        onClick={onClick}
+        onClick={handleCategoryClick}
       >
         <Typography
           variant="button"

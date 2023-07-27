@@ -1,14 +1,15 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { Box, Stack, Typography, useMediaQuery } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 
+import useWindowDimensions from '@/utils/useWindowDimensions';
 import { NextLinkMuiButton } from '../Buttons';
 import { FramerFadeInWrapper } from '../FramerWrappers/FramerFadeInWrapper';
 import { HexPanel } from '../HexPanel';
 import { SectionContainer } from '../SectionContainer';
 
 export const IntroSection = () => {
-  const isMediumSizeScreen = useMediaQuery('(min-width:600px)');
+  const { width: isDesktopSize } = useWindowDimensions({ breakWidth: 600 });
 
   return (
     <SectionContainer
@@ -20,8 +21,8 @@ export const IntroSection = () => {
       }}
     >
       <HexPanel
-        numberOfRows={isMediumSizeScreen ? 7 : 9}
-        tilesPerRow={isMediumSizeScreen ? 10 : 6}
+        numberOfRows={isDesktopSize ? 7 : 10}
+        tilesPerRow={isDesktopSize ? 10 : 4}
         sx={{ position: 'absolute', top: 0, left: 0 }}
       />
 
@@ -31,7 +32,7 @@ export const IntroSection = () => {
         spacing={1}
         padding="1rem"
         position="absolute"
-        top={0}
+        top="1.5rem"
         right={0}
         zIndex={2}
         display="flex"

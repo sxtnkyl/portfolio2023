@@ -1,2 +1,2 @@
-export * from './SkillBadge';
 export * from './SkillCategory';
+export * from './SkillListItem';
