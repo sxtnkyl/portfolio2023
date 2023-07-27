@@ -3,6 +3,7 @@ import { Box } from '@mui/material';
 import { useMemo } from 'react';
 import { CloudCard } from '../CloudCard/CloudCard';
 import { ContactForm } from '../ContactForm';
+import { FramerFadeInWrapper } from '../FramerWrappers/FramerFadeInWrapper';
 import { FloatingHexTile } from '../HexPanel/FloatingHexTile';
 import { SectionContainer } from '../SectionContainer';
 
@@ -45,17 +46,20 @@ export const ContactSection = () => {
         position: 'relative',
       }}
     >
-      <CloudCard
-        sx={{
-          height: '100%',
-          width: isDesktopSize ? '50%' : '100%',
-          zIndex: 2,
-          padding: '4rem',
-          textAlign: 'center',
-        }}
-      >
-        <ContactForm />
-      </CloudCard>
+      <FramerFadeInWrapper>
+        <CloudCard
+          sx={{
+            height: '100%',
+            width: isDesktopSize ? '50%' : '100%',
+            zIndex: 2,
+            padding: '4rem',
+            textAlign: 'center',
+          }}
+        >
+          <ContactForm />
+        </CloudCard>
+      </FramerFadeInWrapper>
+
       <Box sx={{ width: '50%' }}>
         <FloatingHexTile
           tileSize={floatingHexPositions.hex1.tileSize}

@@ -76,7 +76,7 @@ export const ProjectsSection = () => {
       <AnimatePresence>
         <Stack
           key="textAndSmallCardsContainer"
-          component={motion.div}
+          component={FramerFadeInWrapper}
           ref={smallCloudCardWrapperRef}
           spacing={isDesktopSize ? 4 : 2}
           sx={{
@@ -117,7 +117,10 @@ export const ProjectsSection = () => {
         {selectedProject && (
           <LargeProjectCard
             project={selectedProject}
-            sx={{ width: isDesktopSize ? 'auto' : '100%' }}
+            sx={{
+              width: isDesktopSize ? 'auto' : '100%',
+              marginRight: isDesktopSize ? '1rem' : 0,
+            }}
           />
         )}
       </AnimatePresence>
