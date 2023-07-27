@@ -32,7 +32,7 @@ export const useSubmitContactForm = (): SubmitContactForm => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Origin: 'https://www.ksextonexe.info/',
+          Origin: 'https://ksextonexe.info/',
           'x-api-key': apiKey,
         },
         body: JSON.stringify(values),
