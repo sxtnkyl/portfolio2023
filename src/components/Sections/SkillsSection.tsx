@@ -1,6 +1,7 @@
 import { convertHexToRgbOpacity } from '@/utils/convertHexToRgbOpacity';
 import skillData, { SkillDataObject } from '@/utils/skillsData';
-import { Box, Stack, Typography, useMediaQuery } from '@mui/material';
+import useWindowDimensions from '@/utils/useWindowDimensions';
+import { Box, Stack, Typography } from '@mui/material';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react';
 import { FramerFadeInWrapper } from '../FramerWrappers/FramerFadeInWrapper';
@@ -34,18 +35,18 @@ const paragraphVariants = {
 };
 
 export const SkillsSection = () => {
-  const isMediumSizeScreen = useMediaQuery('(min-width:600px)');
+  const { width: isDesktopSize } = useWindowDimensions({ breakWidth: 600 });
   const responsiveWidthSize = useMemo(
-    () => (isMediumSizeScreen ? '50%' : '100%'),
-    [isMediumSizeScreen]
+    () => (isDesktopSize ? '50%' : '100%'),
+    [isDesktopSize]
   );
 
   const [inView, setInView] = useState(false);
   const [selectedCategory, setSelectedCategory] =
     useState<SkillDataObject['category']>();
   useEffect(() => {
-    setSelectedCategory(isMediumSizeScreen ? 'Front End' : undefined);
-  }, [isMediumSizeScreen]);
+    setSelectedCategory(isDesktopSize ? 'Front End' : undefined);
+  }, [isDesktopSize]);
 
   const skillCategoriesList = useMemo(() => {
     return skillData.map((skill) => (
@@ -68,8 +69,8 @@ export const SkillsSection = () => {
   }, [selectedCategory]);
 
   const shouldDisplaySkillParagraph = useMemo(() => {
-    return isMediumSizeScreen || !selectedCategory;
-  }, [isMediumSizeScreen, selectedCategory]);
+    return isDesktopSize || !selectedCategory;
+  }, [isDesktopSize, selectedCategory]);
 
   return (
     <SectionContainer
@@ -77,7 +78,7 @@ export const SkillsSection = () => {
         position: 'relative',
         display: 'flex',
         textAlign: 'center',
-        flexDirection: isMediumSizeScreen ? 'row' : 'column',
+        flexDirection: isDesktopSize ? 'row' : 'column',
       }}
     >
       <Stack
@@ -85,7 +86,7 @@ export const SkillsSection = () => {
         sx={{
           zIndex: 2,
           width: responsiveWidthSize,
-          padding: isMediumSizeScreen ? '2rem' : '1rem 0',
+          padding: isDesktopSize ? '2rem' : '1rem 0',
         }}
       >
         <Box
@@ -119,7 +120,7 @@ export const SkillsSection = () => {
           flexWrap="wrap"
           alignItems="center"
           justifyContent="center"
-          spacing={isMediumSizeScreen ? 4 : 2}
+          spacing={isDesktopSize ? 4 : 2}
           flex={1}
         >
           <LayoutGroup>{skillCategoriesList}</LayoutGroup>
@@ -127,12 +128,12 @@ export const SkillsSection = () => {
       </Stack>
       <AnimatePresence mode="wait">
         <Stack
-          spacing={isMediumSizeScreen ? 4 : 0}
+          spacing={isDesktopSize ? 4 : 0}
           sx={{
-            flexDirection: isMediumSizeScreen ? 'column' : 'row',
-            flexWrap: isMediumSizeScreen ? 'inherit' : 'wrap',
-            justifyContent: isMediumSizeScreen ? 'flex-start' : 'center',
-            padding: isMediumSizeScreen ? '2rem 0' : '0',
+            flexDirection: isDesktopSize ? 'column' : 'row',
+            flexWrap: isDesktopSize ? 'inherit' : 'wrap',
+            justifyContent: isDesktopSize ? 'flex-start' : 'center',
+            padding: isDesktopSize ? '2rem 0' : '0',
             alignItems: 'center',
             overflowY: 'auto',
             overflowX: 'hidden',

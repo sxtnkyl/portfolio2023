@@ -1,6 +1,6 @@
 import { convertHexToRgbOpacity } from '@/utils/convertHexToRgbOpacity';
 import { ProjectData } from '@/utils/projectData';
-import { CardProps, Stack, Typography } from '@mui/material';
+import { CardProps, Grid, Typography } from '@mui/material';
 import { MotionProps, motion } from 'framer-motion';
 import { Dispatch, SetStateAction, useMemo } from 'react';
 import { CloudCard } from '../CloudCard/CloudCard';
@@ -9,32 +9,32 @@ interface SmallProjectCardProps extends CardProps {
   selectedProject?: ProjectData;
   setSelectedProject: Dispatch<SetStateAction<ProjectData | undefined>>;
   project: ProjectData;
-  cardDimensions: { height: number | string; width: number | string };
 }
 
 export const SmallProjectCard = ({
   selectedProject,
   setSelectedProject,
   project,
-  cardDimensions,
   ...rest
 }: SmallProjectCardProps & MotionProps) => {
-  const { height, width } = cardDimensions;
   const isSelected = useMemo(() => {
     return selectedProject === project;
   }, [project, selectedProject]);
 
   return (
-    <Stack
-      sx={{ width: '50%', justifyContent: 'center', alignItems: 'center' }}
+    <Grid
+      xs={12}
+      md={6}
+      item
+      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
     >
       {isSelected ? (
         <CloudCard
           key="smallCard-placeholder"
           onClick={() => setSelectedProject(undefined)}
           sx={{
-            width,
-            height,
+            width: '80%',
+            height: '80%',
             backgroundColor: convertHexToRgbOpacity({
               hex: '#96AFB8',
               opacity: '0.2',
@@ -61,8 +61,8 @@ export const SmallProjectCard = ({
         <CloudCard
           onClick={() => setSelectedProject(project)}
           sx={{
-            width,
-            height,
+            width: '80%',
+            height: '80%',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -104,6 +104,6 @@ export const SmallProjectCard = ({
           </Typography>
         </CloudCard>
       )}
-    </Stack>
+    </Grid>
   );
 };

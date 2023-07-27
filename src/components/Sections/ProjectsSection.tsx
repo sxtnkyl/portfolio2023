@@ -1,6 +1,6 @@
 import { ProjectData, projectData } from '@/utils/projectData';
-import { useBoundingDimensions } from '@/utils/useBoundingDimensions';
-import { Box, Stack, Typography, useMediaQuery } from '@mui/material';
+import useWindowDimensions from '@/utils/useWindowDimensions';
+import { Box, Grid, Stack, Typography } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { FramerFadeInWrapper } from '../FramerWrappers/FramerFadeInWrapper';
@@ -21,55 +21,34 @@ const paragraphVariants = {
 
 export const ProjectsSection = () => {
   const smallCloudCardWrapperRef = useRef(null);
-  const isMediumSizeScreen = useMediaQuery('(min-width:600px)');
-  const { componentWidth } = useBoundingDimensions({
-    componentRef: smallCloudCardWrapperRef,
-  });
-
-  const responsiveWidthSize = useMemo(() => {
-    return isMediumSizeScreen ? '50%' : '100%';
-  }, [isMediumSizeScreen]);
+  const { width: isDesktopSize } = useWindowDimensions({ breakWidth: 600 });
 
   const activeProjects = projectData.filter((project) => project.active);
-
   const [selectedProject, setSelectedProject] = useState<ProjectData>();
   useEffect(() => {
-    setSelectedProject(isMediumSizeScreen ? activeProjects[0] : undefined);
+    setSelectedProject(isDesktopSize ? activeProjects[0] : undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isMediumSizeScreen]);
+  }, [isDesktopSize]);
 
-  const isSmallScreenAndNoSelectedProject = useMemo(() => {
-    return !isMediumSizeScreen && selectedProject;
-  }, [isMediumSizeScreen, selectedProject]);
+  const responsiveWidthSize = useMemo(() => {
+    return isDesktopSize ? '50%' : '100%';
+  }, [isDesktopSize]);
 
   const projectSmallCards = useMemo(() => {
     return activeProjects.map((project) => (
       <SmallProjectCard
         key={`${project.name}-smallCard`}
         project={project}
-        cardDimensions={{
-          height: isSmallScreenAndNoSelectedProject
-            ? '90%'
-            : componentWidth * 0.3,
-          width: isSmallScreenAndNoSelectedProject
-            ? '90%'
-            : componentWidth * 0.3,
-        }}
         selectedProject={selectedProject}
         setSelectedProject={setSelectedProject}
         layoutId={`${project.name}`}
       />
     ));
-  }, [
-    activeProjects,
-    componentWidth,
-    isSmallScreenAndNoSelectedProject,
-    selectedProject,
-  ]);
+  }, [activeProjects, selectedProject]);
 
   const shouldDisplayProjectParagraph = useMemo(() => {
-    return isMediumSizeScreen || !selectedProject;
-  }, [isMediumSizeScreen, selectedProject]);
+    return isDesktopSize || !selectedProject;
+  }, [isDesktopSize, selectedProject]);
 
   return (
     <SectionContainer
@@ -77,17 +56,17 @@ export const ProjectsSection = () => {
         position: 'relative',
         display: 'flex',
         textAlign: 'center',
-        flexDirection: isMediumSizeScreen ? 'row-reverse' : 'column',
+        flexDirection: isDesktopSize ? 'row-reverse' : 'column',
       }}
     >
       <HexPanel
-        numberOfRows={isMediumSizeScreen ? 7 : 10}
-        tilesPerRow={isMediumSizeScreen ? 10 : 4}
+        numberOfRows={isDesktopSize ? 7 : 10}
+        tilesPerRow={isDesktopSize ? 10 : 4}
         sx={{
           position: 'absolute',
           top: 0,
           left: 0,
-          transform: isMediumSizeScreen
+          transform: isDesktopSize
             ? 'rotate(60deg) translateX(-10vw)'
             : 'rotate(30deg) translateX(-30vw) translateY(-20vw)',
           zIndex: 1,
@@ -99,12 +78,12 @@ export const ProjectsSection = () => {
           key="textAndSmallCardsContainer"
           component={motion.div}
           ref={smallCloudCardWrapperRef}
-          spacing={isMediumSizeScreen ? 4 : 2}
+          spacing={isDesktopSize ? 4 : 2}
           sx={{
             zIndex: 2,
             width: responsiveWidthSize,
-            height: isMediumSizeScreen ? '100%' : 'auto',
-            padding: isMediumSizeScreen ? ' 0 1rem' : '1rem 0',
+            height: isDesktopSize ? '100%' : 'auto',
+            padding: isDesktopSize ? ' 0 1rem' : '1rem 0',
           }}
         >
           <Box
@@ -131,19 +110,14 @@ export const ProjectsSection = () => {
               learning and delivering high-quality solutions.
             </Typography>
           </Box>
-          <Stack
-            component={motion.div}
-            direction="row"
-            flexWrap="wrap"
-            flex={isMediumSizeScreen ? 1 : 0}
-          >
+          <Grid container component={motion.div} flex={isDesktopSize ? 1 : 0}>
             {projectSmallCards}
-          </Stack>
+          </Grid>
         </Stack>
         {selectedProject && (
           <LargeProjectCard
             project={selectedProject}
-            sx={{ width: isMediumSizeScreen ? 'auto' : '100%' }}
+            sx={{ width: isDesktopSize ? 'auto' : '100%' }}
           />
         )}
       </AnimatePresence>

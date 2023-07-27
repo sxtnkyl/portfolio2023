@@ -1,7 +1,8 @@
-import { Box, BoxProps, useMediaQuery } from '@mui/material';
+import useWindowDimensions from '@/utils/useWindowDimensions';
+import { Box, BoxProps } from '@mui/material';
 
 export const SectionContainer = ({ children, sx, ...rest }: BoxProps) => {
-  const isMediumSizeScreen = useMediaQuery('(min-width:600px)');
+  const { width: isDesktopSize } = useWindowDimensions({ breakWidth: 600 });
 
   return (
     <Box
@@ -10,7 +11,7 @@ export const SectionContainer = ({ children, sx, ...rest }: BoxProps) => {
         scrollSnapAlign: 'center',
         height: '100dvh',
         width: '100%',
-        padding: isMediumSizeScreen ? '4rem' : '1rem',
+        padding: isDesktopSize ? '4rem' : '1rem',
         ...sx,
       }}
       {...rest}

@@ -1,4 +1,5 @@
-import { Chip, Typography, useMediaQuery } from '@mui/material';
+import useWindowDimensions from '@/utils/useWindowDimensions';
+import { Chip, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import { CloudCard } from '../CloudCard/CloudCard';
 
@@ -8,9 +9,9 @@ const badgeVariants = {
 };
 
 export const SkillListItem = ({ skill }: { skill: string }) => {
-  const isMediumSizeScreen = useMediaQuery('(min-width:600px)');
+  const { width: isDesktopSize } = useWindowDimensions({ breakWidth: 600 });
 
-  return isMediumSizeScreen ? (
+  return isDesktopSize ? (
     <CloudCard
       key={skill}
       variants={badgeVariants}
@@ -26,7 +27,7 @@ export const SkillListItem = ({ skill }: { skill: string }) => {
         maxHeight: '30%',
         backdropFilter: 'blur(20px)',
         padding: '0 1rem',
-        width: isMediumSizeScreen ? '60%' : 'auto',
+        width: isDesktopSize ? '60%' : 'auto',
       }}
     >
       <Typography variant="button" sx={{ zIndex: 2, position: 'relative' }}>
