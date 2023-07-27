@@ -86,7 +86,7 @@ export const SkillsSection = () => {
         sx={{
           zIndex: 2,
           width: responsiveWidthSize,
-          padding: isDesktopSize ? '2rem' : '1rem 0',
+          ...(!isDesktopSize && { padding: '1rem 0' }),
         }}
       >
         <Box
@@ -128,6 +128,7 @@ export const SkillsSection = () => {
       </Stack>
       <AnimatePresence mode="wait">
         <Stack
+          component={FramerFadeInWrapper}
           spacing={isDesktopSize ? 4 : 0}
           sx={{
             flexDirection: isDesktopSize ? 'column' : 'row',
