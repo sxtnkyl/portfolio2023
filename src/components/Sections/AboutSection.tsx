@@ -1,8 +1,8 @@
 import { Stack, Typography, styled } from '@mui/material';
 import { CloudCard } from '../CloudCard/CloudCard';
+import { SectionContainer } from '../Containers/SectionContainer';
 import { FramerFadeInWrapper } from '../FramerWrappers/FramerFadeInWrapper';
 import { FloatingHexTile } from '../HexPanel/FloatingHexTile';
-import { SectionContainer } from '../SectionContainer';
 
 const StTextWrapper = styled(Stack)`
   height: 100%;

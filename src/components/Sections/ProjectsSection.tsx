@@ -3,10 +3,10 @@ import useWindowDimensions from '@/utils/useWindowDimensions';
 import { Box, Grid, Stack, Typography } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { MaxContainer, SectionContainer } from '../Containers';
 import { FramerFadeInWrapper } from '../FramerWrappers/FramerFadeInWrapper';
 import { HexPanel } from '../HexPanel';
 import { LargeProjectCard, SmallProjectCard } from '../ProjectComponents';
-import { SectionContainer } from '../SectionContainer';
 
 const paragraphVariants = {
   initial: { height: 'auto', opacity: 1 },
@@ -52,12 +52,7 @@ export const ProjectsSection = () => {
 
   return (
     <SectionContainer
-      sx={{
-        position: 'relative',
-        display: 'flex',
-        textAlign: 'center',
-        flexDirection: isDesktopSize ? 'row-reverse' : 'column',
-      }}
+      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
     >
       <HexPanel
         numberOfRows={isDesktopSize ? 7 : 10}
@@ -73,57 +68,64 @@ export const ProjectsSection = () => {
         }}
       />
 
-      <AnimatePresence>
-        <Stack
-          key="textAndSmallCardsContainer"
-          component={FramerFadeInWrapper}
-          ref={smallCloudCardWrapperRef}
-          spacing={isDesktopSize ? 4 : 2}
-          sx={{
-            zIndex: 2,
-            width: responsiveWidthSize,
-            height: isDesktopSize ? '100%' : 'auto',
-            padding: isDesktopSize ? ' 0 1rem' : '1rem 0',
-          }}
-        >
-          <Box
-            component={motion.div}
-            variants={paragraphVariants}
-            initial="initial"
-            animate={shouldDisplayProjectParagraph ? 'initial' : 'animate'}
-          >
-            <Typography
-              key="projectsParagraph"
-              component={FramerFadeInWrapper}
-              variant="h6"
-              sx={{
-                fontWeight: 900,
-                textShadow:
-                  '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
-              }}
-            >
-              The following collection of web applications and projects
-              demonstrate the journey of my web development career. Each
-              represents a unique challenge, skill, or milestone - from
-              responsive and intuitive interfaces to integration of modern
-              tooling and libraries, reflecting my dedication to continuous
-              learning and delivering high-quality solutions.
-            </Typography>
-          </Box>
-          <Grid container component={motion.div} flex={isDesktopSize ? 1 : 0}>
-            {projectSmallCards}
-          </Grid>
-        </Stack>
-        {selectedProject && (
-          <LargeProjectCard
-            project={selectedProject}
+      <MaxContainer
+        sx={{
+          justifyContent: 'flex-start',
+          flexDirection: isDesktopSize ? 'row-reverse' : 'column',
+        }}
+      >
+        <AnimatePresence>
+          <Stack
+            key="textAndSmallCardsContainer"
+            component={FramerFadeInWrapper}
+            ref={smallCloudCardWrapperRef}
+            spacing={isDesktopSize ? 4 : 2}
             sx={{
-              width: isDesktopSize ? 'auto' : '100%',
-              marginRight: isDesktopSize ? '1rem' : 0,
+              zIndex: 2,
+              width: responsiveWidthSize,
+              height: isDesktopSize ? '100%' : 'auto',
+              padding: isDesktopSize ? ' 0 1rem' : '1rem 0',
             }}
-          />
-        )}
-      </AnimatePresence>
+          >
+            <Box
+              component={motion.div}
+              variants={paragraphVariants}
+              initial="initial"
+              animate={shouldDisplayProjectParagraph ? 'initial' : 'animate'}
+            >
+              <Typography
+                key="projectsParagraph"
+                component={FramerFadeInWrapper}
+                variant="h6"
+                sx={{
+                  fontWeight: 900,
+                  textShadow:
+                    '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
+                }}
+              >
+                The following collection of web applications and projects
+                demonstrate the journey of my web development career. Each
+                represents a unique challenge, skill, or milestone - from
+                responsive and intuitive interfaces to integration of modern
+                tooling and libraries, reflecting my dedication to continuous
+                learning and delivering high-quality solutions.
+              </Typography>
+            </Box>
+            <Grid container component={motion.div} flex={isDesktopSize ? 1 : 0}>
+              {projectSmallCards}
+            </Grid>
+          </Stack>
+          {selectedProject && (
+            <LargeProjectCard
+              project={selectedProject}
+              sx={{
+                width: isDesktopSize ? 'auto' : '100%',
+                marginRight: isDesktopSize ? '1rem' : 0,
+              }}
+            />
+          )}
+        </AnimatePresence>
+      </MaxContainer>
     </SectionContainer>
   );
 };
