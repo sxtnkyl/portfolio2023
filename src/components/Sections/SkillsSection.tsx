@@ -4,8 +4,8 @@ import useWindowDimensions from '@/utils/useWindowDimensions';
 import { Box, Stack, Typography } from '@mui/material';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react';
+import { MaxContainer, SectionContainer } from '../Containers';
 import { FramerFadeInWrapper } from '../FramerWrappers/FramerFadeInWrapper';
-import { SectionContainer } from '../SectionContainer';
 import { SkillCategory, SkillListItem } from '../SkillComponents';
 
 const categoryListVariants = {
@@ -74,89 +74,94 @@ export const SkillsSection = () => {
 
   return (
     <SectionContainer
-      sx={{
-        position: 'relative',
-        display: 'flex',
-        textAlign: 'center',
-        flexDirection: isDesktopSize ? 'row' : 'column',
-      }}
+      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
     >
-      <Stack
-        spacing={4}
+      <MaxContainer
         sx={{
-          zIndex: 2,
-          width: responsiveWidthSize,
-          ...(!isDesktopSize && { padding: '1rem 0' }),
+          justifyContent: 'flex-start',
+          flexDirection: isDesktopSize ? 'row' : 'column',
         }}
       >
-        <Box
-          component={motion.div}
-          variants={paragraphVariants}
-          initial="initial"
-          animate={shouldDisplaySkillParagraph ? 'initial' : 'animate'}
-        >
-          <Typography
-            key="skillParagraph"
-            component={FramerFadeInWrapper}
-            variant="h6"
-            sx={{
-              fontWeight: 900,
-              textShadow:
-                '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
-            }}
-          >
-            During my career I&apos;ve used many technologies to build scalable,
-            maintainable, and intelligible applications. I currently enjoy
-            leveraging Nextjs, Material-UI, and AWS services for personal
-            projects, but here is a comprehensive list of categorized tools
-            I&apos;m familiar with.
-          </Typography>
-        </Box>
         <Stack
-          component={motion.div}
-          variants={categoryListVariants}
-          animate={inView ? 'show' : 'hidden'}
-          onViewportEnter={() => setInView(true)}
-          flexWrap="wrap"
-          alignItems="center"
-          justifyContent="center"
-          spacing={isDesktopSize ? 4 : 2}
-          flex={1}
-        >
-          <LayoutGroup>{skillCategoriesList}</LayoutGroup>
-        </Stack>
-      </Stack>
-      <AnimatePresence mode="wait">
-        <Stack
-          component={FramerFadeInWrapper}
-          spacing={isDesktopSize ? 4 : 0}
+          spacing={4}
           sx={{
-            flexDirection: isDesktopSize ? 'column' : 'row',
-            flexWrap: isDesktopSize ? 'inherit' : 'wrap',
-            justifyContent: isDesktopSize ? 'flex-start' : 'center',
-            padding: isDesktopSize ? '2rem 0' : '0',
-            alignItems: 'center',
-            overflowY: 'auto',
-            overflowX: 'hidden',
             zIndex: 2,
-            flex: 1,
-            '&::-webkit-scrollbar': {
-              width: '0.5rem',
-              height: '1rem',
-              opacity: '0.5',
-            },
-            '&::-webkit-scrollbar-thumb': {
-              backgroundColor: convertHexToRgbOpacity({
-                hex: '#96AFB8',
-                opacity: '0.4',
-              }),
-              borderRadius: '2px',
-            },
+            width: responsiveWidthSize,
+            ...(!isDesktopSize && { padding: '1rem 0' }),
           }}
         >
-          {selectedSkillCategorySkillsList}
+          <Box
+            component={motion.div}
+            variants={paragraphVariants}
+            initial="initial"
+            animate={shouldDisplaySkillParagraph ? 'initial' : 'animate'}
+          >
+            <Typography
+              key="skillParagraph"
+              component={FramerFadeInWrapper}
+              variant="h6"
+              sx={{
+                fontWeight: 900,
+                textShadow:
+                  '#C1FAFF 0px 2px 5px, #C1FAFF 2px 0px 5px, #C1FAFF 0px -2px 5px, #C1FAFF -2px 0px 5px',
+              }}
+            >
+              During my career I&apos;ve used many technologies to build
+              scalable, maintainable, and intelligible applications. I currently
+              enjoy leveraging Nextjs, Material-UI, and AWS services for
+              personal projects, but here is a comprehensive list of categorized
+              tools I&apos;m familiar with.
+            </Typography>
+          </Box>
+          <Stack
+            component={motion.div}
+            variants={categoryListVariants}
+            animate={inView ? 'show' : 'hidden'}
+            onViewportEnter={() => setInView(true)}
+            flexWrap="wrap"
+            alignItems="center"
+            justifyContent="center"
+            spacing={isDesktopSize ? 4 : 2}
+            flex={1}
+          >
+            <LayoutGroup>{skillCategoriesList}</LayoutGroup>
+          </Stack>
         </Stack>
-      </AnimatePresence>
+        <AnimatePresence mode="wait">
+          {selectedCategory && (
+            <Stack
+              component={FramerFadeInWrapper}
+              spacing={isDesktopSize ? 4 : 0}
+              sx={{
+                flexDirection: isDesktopSize ? 'column' : 'row',
+                flexWrap: isDesktopSize ? 'inherit' : 'wrap',
+                justifyContent: isDesktopSize ? 'flex-start' : 'center',
+                padding: isDesktopSize ? '2rem 0' : '0',
+                height: '100%',
+                alignItems: 'center',
+                overflowY: 'auto',
+                overflowX: 'hidden',
+                zIndex: 2,
+                flex: 1,
+                '&::-webkit-scrollbar': {
+                  width: '0.5rem',
+                  height: '1rem',
+                  opacity: '0.5',
+                },
+                '&::-webkit-scrollbar-thumb': {
+                  backgroundColor: convertHexToRgbOpacity({
+                    hex: '#96AFB8',
+                    opacity: '0.4',
+                  }),
+                  borderRadius: '2px',
+                },
+              }}
+            >
+              {selectedSkillCategorySkillsList}
+            </Stack>
+          )}
+        </AnimatePresence>
+      </MaxContainer>
     </SectionContainer>
   );
 };

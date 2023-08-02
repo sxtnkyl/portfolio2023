@@ -55,6 +55,7 @@ export const SkillCategory = ({
         variant={isSelected ? 'contained' : 'outlined'}
         color={isSelected ? 'secondary' : 'primary'}
         onClick={handleCategoryClick}
+        sx={{ backdropFilter: 'blur(20px)' }}
       >
         <Typography
           variant="button"

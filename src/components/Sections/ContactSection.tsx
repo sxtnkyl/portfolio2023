@@ -3,9 +3,9 @@ import { Box } from '@mui/material';
 import { useMemo } from 'react';
 import { CloudCard } from '../CloudCard/CloudCard';
 import { ContactForm } from '../ContactForm';
+import { MaxContainer, SectionContainer } from '../Containers';
 import { FramerFadeInWrapper } from '../FramerWrappers/FramerFadeInWrapper';
 import { FloatingHexTile } from '../HexPanel/FloatingHexTile';
-import { SectionContainer } from '../SectionContainer';
 
 export const ContactSection = () => {
   const { width: isDesktopSize } = useWindowDimensions({ breakWidth: 600 });
@@ -16,7 +16,7 @@ export const ContactSection = () => {
         tileSize: isDesktopSize ? 200 : 125,
         position: {
           right: isDesktopSize ? '30%' : '40%',
-          bottom: isDesktopSize ? '60%' : '22%',
+          bottom: isDesktopSize ? '60%' : '18%',
           zIndex: 3,
         },
       },
@@ -42,11 +42,14 @@ export const ContactSection = () => {
 
   return (
     <SectionContainer
-      sx={{
-        position: 'relative',
-      }}
+      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
     >
-      <FramerFadeInWrapper>
+      <MaxContainer
+        component={FramerFadeInWrapper}
+        sx={{
+          ...(!isDesktopSize && { display: 'inline' }),
+        }}
+      >
         <CloudCard
           sx={{
             height: '100%',
@@ -58,22 +61,22 @@ export const ContactSection = () => {
         >
           <ContactForm />
         </CloudCard>
-      </FramerFadeInWrapper>
 
-      <Box sx={{ width: '50%' }}>
-        <FloatingHexTile
-          tileSize={floatingHexPositions.hex1.tileSize}
-          sx={{ ...floatingHexPositions.hex1.position }}
-        />
-        <FloatingHexTile
-          tileSize={floatingHexPositions.hex2.tileSize}
-          sx={{ ...floatingHexPositions.hex2.position }}
-        />
-      </Box>
-      <FloatingHexTile
-        tileSize={floatingHexPositions.hex3.tileSize}
-        sx={{ ...floatingHexPositions.hex3.position }}
-      />
+        <Box sx={{ width: '50%' }}>
+          <FloatingHexTile
+            tileSize={floatingHexPositions.hex1.tileSize}
+            sx={{ ...floatingHexPositions.hex1.position }}
+          />
+          <FloatingHexTile
+            tileSize={floatingHexPositions.hex2.tileSize}
+            sx={{ ...floatingHexPositions.hex2.position }}
+          />
+          <FloatingHexTile
+            tileSize={floatingHexPositions.hex3.tileSize}
+            sx={{ ...floatingHexPositions.hex3.position }}
+          />
+        </Box>
+      </MaxContainer>
     </SectionContainer>
   );
 };

@@ -42,6 +42,7 @@ const skillData: SkillDataObject[] = [
       'AWS Cloud Services',
       'NodeJS',
       'Keycloak',
+      'Harness',
       'Circle CI',
       'Express',
       'Nodemon',

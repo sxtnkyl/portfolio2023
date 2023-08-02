@@ -11,7 +11,7 @@ export const FramerFadeInWrapper = ({
   ...rest
 }: FramerFadeInWrapperProps & MotionProps) => {
   const fadeInWrapperRef = useRef(null);
-  const isInView = useInView(fadeInWrapperRef, { once: true, amount: 'all' });
+  const isInView = useInView(fadeInWrapperRef, { once: true, amount: 0.9 });
 
   return (
     <Box
